@@ -67,7 +67,11 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
 
     ray2 = normalize(ray.getDirection());
     // TODO: A canviar el càlcul del color en les diferents fases (via el mètode de shading)
-    color = 0.5f*vec3(ray2.x+1, ray2.y+1, ray2.z+1);
+    color = vec3(0.5, 0.7, 1) + vec3(-ray2.y, -ray2.y, -ray2.y);
+    /*Diferents opcions, no aconseguit 100%:
+      color = vec3(-ray2.y+0.5, -ray2.y+0.7, 1);
+      color = vec3(0.5, 0.7, 1) + vec3(-ray2.y+0.5, -ray2.y+0.5, -ray2.y+0.5);
+    */
     return color;
 }
 
