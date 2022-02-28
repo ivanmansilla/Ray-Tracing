@@ -64,12 +64,9 @@ bool Scene::hasHit (const Ray& raig) const {
 vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
     vec3 color;
     vec3 ray2;
-    vec3 color1, color2;
     ray2 = ray.getDirection();
     // TODO: A canviar el càlcul del color en les diferents fases (via el mètode de shading)
-    color1 = vec3(0.5, 0.7, 1);
-    color2 = vec3(1,1,1);
-    color = (vec3((ray2.y + 1)*0.5)*color1) + (vec3(1-((ray2.y + 1)*0.5))*color2);
+    color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
     return color;
 }
 
