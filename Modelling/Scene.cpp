@@ -70,11 +70,6 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
     color1 = vec3(0.5, 0.7, 1);
     color2 = vec3(1,1,1);
     color = (vec3((ray2.y + 1)*0.5)*color1) + (vec3(1-((ray2.y + 1)*0.5))*color2);
-    /*Diferents opcions, no aconseguit 100%:
-      color = vec3(-ray2.y+0.5, -ray2.y+0.7, 1);
-      color = vec3(0.5, 0.7, 1) + vec3(-ray2.y, -ray2.y, -ray2.y);
-      color = vec3(0.5, 0.7, 1) + vec3(-ray2.y+0.5, -ray2.y+0.5, -ray2.y+0.5);
-    */
     return color;
 }
 
