@@ -35,9 +35,8 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
     bool hasClosestHit = false;
 
     for (shared_ptr<Object> object : objects) {
-        if (object->closestHit(raig, info)) {
-            // Agafar el que te valor mes petit
-        }
+        if (object->closestHit(raig, info))
+            hasClosestHit = true;
     }
 
     return hasClosestHit;
@@ -73,12 +72,13 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
     vec3 ray2;
     HitInfo h;
     ray2 = ray.getDirection();
+
     if (closestHit(ray, h)) {
         // Retorna color esfera
+        color = h.mat_ptr->Kd;
     } else {
-         color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
+        color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
     }
-    // TODO: A canviar el càlcul del color en les diferents fases (via el mètode de shading)
 
     return color;
 }
