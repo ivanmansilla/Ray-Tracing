@@ -74,8 +74,8 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
     ray2 = ray.getDirection();
 
     if (closestHit(ray, h)) {
-        // Retorna color esfera
-        color = h.mat_ptr->Kd;
+        // color = h.mat_ptr->Kd; // Pregunta g
+        color = h.normal; // Pregunt h
     } else {
         color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
     }
