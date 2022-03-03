@@ -2,6 +2,7 @@
 
 
 #include <vector>
+#include <math.h>
 #include "Ray.h"
 #include "Hitable.h"
 #include "Animation.h"
