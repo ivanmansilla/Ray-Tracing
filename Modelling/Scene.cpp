@@ -36,10 +36,14 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
 
     for (shared_ptr<Object> object : objects) {
         if (object->closestHit(raig, info))
-            hasClosestHit = true;
+            return true;
+        else
+            if (object->closestHit(raig, info))
+                return true;
+
     }
 
-    return hasClosestHit;
+    return false;
 }
 
 /*
@@ -119,8 +123,10 @@ void Scene::setTopBackground(vec3 color) {
 */
 vec3 Scene::shading(HitInfo& info, vec3 lookFrom) {
     vec3 color;
-    float dist = sqrt(pow(lookFrom[0]-info.p[0],2) + pow(lookFrom[1]-info.p[1],2) + pow(lookFrom[2]-info.p[2],2)); // Distancia euclidiana entre l'observador i el punt on intersecta
-    color = info.mat_ptr->Ka * dist * info.t; // Triem un material per a definir un color i ho multipliquem per la distància. Normalitzem amb la t
+    lookFrom = normalize(lookFrom); // Normalitzem per a que la distància euclidiana acabi donant entre 0 i 1.
+    vec3 p = normalize(info.p);
+    float dist = sqrt(pow(lookFrom[0]-p[0],2) + pow(lookFrom[1]-p[1],2) + pow(lookFrom[2]-p[2],2)); // Distancia euclidiana entre l'observador i el punt on intersecta normalitzats
+    color = normalize(info.mat_ptr->Ka) * dist; // Multipliquem el vector del material normalitzat per la distància a la que esteim de l'objecte
     return color;
 }
 
