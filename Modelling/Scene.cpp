@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include <iostream>
 
 Scene::Scene()
 {
@@ -32,15 +33,10 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
     // mes propera a l'observador, en el cas que n'hi hagi més d'una.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
 
-    bool hasClosestHit = false;
-
-    for (shared_ptr<Object> object : objects) {
-        if (object->closestHit(raig, info))
+    for (unsigned int i = 0; i < objects.size(); i++) {
+        if (objects[i]->closestHit(raig, info)) {
             return true;
-        else
-            if (object->closestHit(raig, info))
-                return true;
-
+        }
     }
 
     return false;
@@ -80,8 +76,9 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
     if (closestHit(ray, h)) {
         // color = h.mat_ptr->Kd; // Pregunta g
         // color = h.normal; // Pregunt h
-        color = shading(h, lookFrom); // Pregunta i (falta completar método shading)
+        // color = shading(h, lookFrom); // Pregunta i (falta completar método shading)
         // Pregunta j --> Canviar paràmetres de setUpRenderOneSphere.json
+        color = h.mat_ptr->Kd;  // Pregunta k
     } else {
         color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
     }
