@@ -32,7 +32,6 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
     // Una possible solucio es cridar el mètode "hit" per a tots els objectes i quedar-se amb la interseccio
     // mes propera a l'observador, en el cas que n'hi hagi més d'una.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
-
     for (unsigned int i = 0; i < objects.size(); i++) {
         if (objects[i]->closestHit(raig, info)) {
             return true;
@@ -76,9 +75,9 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
     if (closestHit(ray, h)) {
         // color = h.mat_ptr->Kd; // Pregunta g
         // color = h.normal; // Pregunt h
-        // color = shading(h, lookFrom); // Pregunta i (falta completar método shading)
+         color = shading(h, lookFrom); // Pregunta i
         // Pregunta j --> Canviar paràmetres de setUpRenderOneSphere.json
-        color = h.mat_ptr->Kd;  // Pregunta k
+        //color = h.mat_ptr->Kd;  // Pregunta k
     } else {
         color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
     }
@@ -123,7 +122,8 @@ vec3 Scene::shading(HitInfo& info, vec3 lookFrom) {
     lookFrom = normalize(lookFrom); // Normalitzem per a que la distància euclidiana acabi donant entre 0 i 1.
     vec3 p = normalize(info.p);
     float dist = sqrt(pow(lookFrom[0]-p[0],2) + pow(lookFrom[1]-p[1],2) + pow(lookFrom[2]-p[2],2)); // Distancia euclidiana entre l'observador i el punt on intersecta normalitzats
-    color = normalize(info.mat_ptr->Ka) * dist; // Multipliquem el vector del material normalitzat per la distància a la que esteim de l'objecte
+    color = normalize(info.mat_ptr->Ka) * dist; // color calculat amb la distància euclidiana
+    //color = vec3(info.t/2, info.t/2, info.t/2); // Color segons la distància (normalització("/2") hardcodejada per OneSphere
     return color;
 }
 
