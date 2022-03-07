@@ -31,6 +31,7 @@ SOURCES += \
         Modelling/Animation.cpp \
         Modelling/Hitable.cpp \
         Modelling/Objects/Mesh.cpp \
+        Modelling/Objects/Triangle.cpp \
         Modelling/Scene.cpp \
         Modelling/Lights/Light.cpp \
         Modelling/Lights/PointLight.cpp \
@@ -63,6 +64,7 @@ DISTFILES += \
     resources/mapZoom2.png \
     resources/setupRender.json \
     resources/spheres.json \
+    resources/triangles.json
 
 HEADERS += \
     Controller.h \
@@ -93,6 +95,7 @@ HEADERS += \
     Modelling/Objects/Object.h \
     Modelling/Objects/Plane.h \
     Modelling/Objects/Sphere.h \
+    Modelling/Objects/Triangle.h \
     Modelling/Ray.h \
     Modelling/Scene.h \
     Modelling/TG/TG.h \
