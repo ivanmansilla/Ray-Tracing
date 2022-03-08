@@ -1,30 +1,51 @@
 #include "Triangle.h"
 
-Triangle::Triangle(vec3 a, vec3 b, vec3 c, vec3 normal) : Plane() {
-    this->a = a;
-    this->b = b;
-    this->c = c;
-    this->normal = normalize(normal);
-}
+
 
 bool Triangle::closestHit(Ray &r, HitInfo &info) const {
-    if (Plane::closestHit(r, info)) {
+    /*if (Plane::closestHit(r, info)) {
         float u = getArea(c,a,info.p) / getArea(a,b,c);
         float v = getArea(a,b,info.p) / getArea(a,b,c);
         float w = getArea(b,c,info.p) / getArea(a,b,c);
 
-        vec3 p = w*a + u*b + v*c;
 
-        if (abs(u+v+w-1.0) > 0.01) { // Siempre da u, v y w = 1 por separado, error aqui
-            return false;
+
+        if (abs(u+v+w-1.0) < DBL_EPSILON) { // Siempre da u, v y w = 1 por separado, error aqui
+
+
+            return true;
         }
+        vec3 p = w*a + u*b + v*c;
         info.p = p;
         info.normal = normal;
         info.mat_ptr = material.get();
-        return true;
     }
     return false;
+    */
 
+    // return Plane::closestHit(r, info); // Comprovació si funciona intersecció amb el pla
+    if (Plane::closestHit(r, info)){
+        vec3 ab = b - a;
+        vec3 ac = c - a;
+        vec3 n = cross(ab, ac);
+        float area = n.length()/2; // Area del triangle
+        vec3 perp; // Vector perpendicular al pla
+
+        vec3 edge1 = c - b;
+        vec3 bp = info.p - b;
+        perp = cross(edge1, bp);
+        float u = (perp.length() / 2)/area;
+        if(dot(n, perp) < 0) return false;
+
+        vec3 edge2 = a - c;
+        vec3 cp = info.p - c;
+        perp = cross(edge2, cp);
+        float v = (perp.length() / 2)/area;
+        if(dot(n, perp) < 0) return false;
+
+    return true;
+    }
+    return false;
 }
 
 bool Triangle::hasHit(const Ray &r) const {
@@ -62,18 +83,20 @@ void Triangle::read(const QJsonObject &json) {
         c[1] = auxVec[1].toDouble();
         c[2] = auxVec[2].toDouble();
     }
-    if (json.contains("normal") && json["normal"].isArray()) {
-        QJsonArray auxVec = json["normal"].toArray();
-        normal[0] = auxVec[0].toDouble();
-        normal[1] = auxVec[1].toDouble();
-        normal[2] = auxVec[2].toDouble();
-    }
+    normal = cross(a-b, a-c);
+    point = a;
 }
 
 float Triangle::getArea(vec3 p1, vec3 p2, vec3 p3) const {
-    vec3 area = cross(p1-p2, p1-p2)/2.0f;
-    return area.length();
-    /*    vec3 areaC = cross(p1-p2, p1-p2);
-    float area = (sqrt(pow(areaC[0],2) + pow(areaC[1],2) + pow(areaC[2],2)))/2; // Magnitud del vector resultante /2 (area triangulo)
-    return area;*/
+    /*vec3 p1p2 = p2 - p1;
+    vec3 p1p3 = p3 - p1;
+    vec3 area = cross(p1p2, p1p3);
+    float a = area[0];
+    float a1= area[1];
+    float a2 = area[2];
+    float areaT = area.length()/2;
+
+    return areaT;
+    */
 }
+
