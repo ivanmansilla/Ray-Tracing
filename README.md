@@ -2,21 +2,21 @@
 
 ## Equip:
 **lletra i numero de l'equip**
-* estudiant 1
-* estudiant 2
-* estudiant 3
-* estudiant 4
+* Ivan Mansilla Flores
+* Jordi Bujaldón Devesa
+* Miriam Martinez
+* Lluc Slatosch Vives
 
 ### Features (marqueu les que heu fet i qui les ha fet)
 - Fase 1
-    - [ ] Background amb degradat
-      - Estudiants que hi han participat
+    - [x] Background amb degradat
+      - Tots
    
     - Creació de nous objectes i interseccions (VIRTUALWORLD) 
-        - [ ] 3.1.a. Mapping de mons virtuals
-          - Estudiants que hi han participat
-        - [ ] 3.1.b. Hit Triangle
-          - Estudiants que hi han participat
+        - [x] 3.1.a. Mapping de mons virtuals
+          - Tots
+        - [x] 3.1.b. Hit Triangle
+          - Tots
         - [ ] 3.1.c. Hit Boundary Object
           - Estudiants que hi han participat
         - [ ] 3.1.d. Hit Cilindre
