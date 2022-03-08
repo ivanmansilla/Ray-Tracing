@@ -1,11 +1,10 @@
 #include "Triangle.h"
 
-Triangle::Triangle(vec3 a, vec3 b, vec3 c, vec3 point) {
+Triangle::Triangle(vec3 a, vec3 b, vec3 c, vec3 normal) : Plane() {
     this->a = a;
     this->b = b;
     this->c = c;
-    this->normal = normalize(cross(b-a, c-a));
-    this->point = point;
+    this->normal = normalize(normal);
 }
 
 bool Triangle::closestHit(Ray &r, HitInfo &info) const {
@@ -16,14 +15,16 @@ bool Triangle::closestHit(Ray &r, HitInfo &info) const {
 
         vec3 p = w*a + u*b + v*c;
 
-        if (abs(u+v+w-1.0) < DBL_EPSILON) {
-            info.p = p;
-            info.normal = normal;
-            info.mat_ptr = material.get();
-            return true;
+        if (abs(u+v+w-1.0) > 0.01) { // Siempre da u, v y w = 1 por separado, error aqui
+            return false;
         }
+        info.p = p;
+        info.normal = normal;
+        info.mat_ptr = material.get();
+        return true;
     }
     return false;
+
 }
 
 bool Triangle::hasHit(const Ray &r) const {
@@ -61,9 +62,18 @@ void Triangle::read(const QJsonObject &json) {
         c[1] = auxVec[1].toDouble();
         c[2] = auxVec[2].toDouble();
     }
+    if (json.contains("normal") && json["normal"].isArray()) {
+        QJsonArray auxVec = json["normal"].toArray();
+        normal[0] = auxVec[0].toDouble();
+        normal[1] = auxVec[1].toDouble();
+        normal[2] = auxVec[2].toDouble();
+    }
 }
 
 float Triangle::getArea(vec3 p1, vec3 p2, vec3 p3) const {
-    vec3 area = cross(p2-p1, p3-p1) / 2.0f;
+    vec3 area = cross(p1-p2, p1-p2)/2.0f;
     return area.length();
+    /*    vec3 areaC = cross(p1-p2, p1-p2);
+    float area = (sqrt(pow(areaC[0],2) + pow(areaC[1],2) + pow(areaC[2],2)))/2; // Magnitud del vector resultante /2 (area triangulo)
+    return area;*/
 }

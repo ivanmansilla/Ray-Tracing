@@ -1,0 +1,21 @@
+{
+    "scene": "Pla",
+    "typeScene": "VIRTUAL",
+    "objects": [
+        {
+          "name": "Pla 1",
+          "type": "plane",
+          "normal": [2.0, 1.0, 1.0],
+          "point": [1.0, 1.0, 1.0],
+          "material": {
+            "type": "lambertian",
+            "ka": [0.2, 0.2, 0.2],
+            "kd": [0.5, 0.5, 0.5],
+            "ks": [1.0, 1.0, 1.0],
+            "shininess": 10.0,
+            "kt": [0.0, 0.0, 0.0],
+            "nut": 0.0
+            }
+        }
+    ]
+}

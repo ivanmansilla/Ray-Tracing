@@ -27,5 +27,6 @@
         <file>resources/setupDataBCNOneValue.json</file>
         <file>resources/threeSpheres.json</file>
         <file>resources/triangles.json</file>
+        <file>resources/plane.json</file>
     </qresource>
 </RCC>
