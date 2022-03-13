@@ -14,6 +14,7 @@ Scene::Scene(shared_ptr<Object> fp)
 {
     pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
+    baseObj = fp;
 }
 
 /*
@@ -32,6 +33,11 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
     // Una possible solucio es cridar el mètode "hit" per a tots els objectes i quedar-se amb la interseccio
     // mes propera a l'observador, en el cas que n'hi hagi més d'una.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
+
+    if (baseObj->closestHit(raig, info)) {
+        return true;
+    }
+
     for (unsigned int i = 0; i < objects.size(); i++) {
         if (objects[i]->closestHit(raig, info)) {
             return true;

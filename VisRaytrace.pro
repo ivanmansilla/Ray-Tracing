@@ -30,6 +30,7 @@ SOURCES += \
         Main.cpp \
         Modelling/Animation.cpp \
         Modelling/Hitable.cpp \
+        Modelling/Objects/FittedPlane.cpp \
         Modelling/Objects/Mesh.cpp \
         Modelling/Objects/Triangle.cpp \
         Modelling/Scene.cpp \
@@ -91,6 +92,7 @@ HEADERS += \
     Modelling/Materials/Material.h \
     Modelling/Materials/Texture.h \
     Modelling/Objects/Cara.h \
+    Modelling/Objects/FittedPlane.h \
     Modelling/Objects/Mesh.h \
     Modelling/Objects/Object.h \
     Modelling/Objects/Plane.h \

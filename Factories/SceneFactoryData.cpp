@@ -87,7 +87,7 @@ void SceneFactoryData::read(const QJsonObject &json)
             o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
             o->read(jbase);
             // TO DO: Fase 1: Afegeix l'objecte base a l'escena
-            // scene->baseObj = o;
+            scene->baseObj = o;
         }
     }
     mapping = make_shared<InfoMapping>();
@@ -103,9 +103,9 @@ void SceneFactoryData:: write(QJsonObject &json) const
 
    QJsonObject jbase;
    // TO DO Fase 1: Cal escriure l'objecte base a fitxer: Descomenta les següents línies
-   // scene->baseObj->write(jbase);
-   // auto value = ObjectFactory::getInstance().getIndexType(scene->baseObj);
-   // jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
+   scene->baseObj->write(jbase);
+   auto value = ObjectFactory::getInstance().getIndexType(scene->baseObj);
+   jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
 
    json["base"] = jbase;
 
@@ -118,7 +118,7 @@ void SceneFactoryData::print(int indentation) const
     QTextStream(stdout) << indent << "scene:\t" << scene->name << "\n";
     QTextStream(stdout) << indent << "typeScene:\t" << SceneFactory::getNameType(currentType) << "\n";
     QTextStream(stdout) << indent << "base:\t\n";
-    // scene->baseObj->print(indentation +2);
+    scene->baseObj->print(indentation +2);
     mapping->print(indentation+2);
 }
 

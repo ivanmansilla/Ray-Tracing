@@ -84,6 +84,7 @@ public:
 
     // void setGlobalLight(vec3 light);
     // void setLights(std::vector<shared_ptr<Light>> lights);
+    shared_ptr<Object> baseObj;
 
 private:
     // FASE 1: Càlcul de la il.luminació en un punt (Blinn-Phong i ombres)

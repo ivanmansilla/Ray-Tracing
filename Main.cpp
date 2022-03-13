@@ -20,6 +20,9 @@ int main(int argc, char **argv) {
     // Pregunta m
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/threeSpheres", "://resources/setupRenderSpheres");
 
+    // 4.2- apartado b
+    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropa", "://resources/setupDataEuropa");
+
     controller->start(argc, argv);
 
     return(0);
