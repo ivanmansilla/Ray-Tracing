@@ -23,14 +23,37 @@ Mesh::~Mesh() {
 
 void Mesh::construeix_triangles() {
     // TO DO Fase 1: A implementar
+    vector<vec4> vxsCara; // Vertexs reals de cada cara
+    Triangle *tri;
+    for(Cara cara : cares){
+        vxsCara.clear();
+        vxsCara.push_back(vertexs[cara.idxVertices[0]]);
+        vxsCara.push_back(vertexs[cara.idxVertices[1]]);
+        vxsCara.push_back(vertexs[cara.idxVertices[2]]);
+        // Ara treiem l'index i convertim a vec3 per a construir el triangle
+        vec3 a = vec3(vxsCara[0][1], vxsCara[0][2], vxsCara[0][3]);
+        vec3 b = vec3(vxsCara[1][1], vxsCara[1][2], vxsCara[1][3]);
+        vec3 c = vec3(vxsCara[2][1], vxsCara[2][2], vxsCara[2][3]);
+        tri = new Triangle(a, b, c);
+        // Omplim la llista de triangles amb cadascun
+        triangles.push_back(*tri);
+    }
+
 }
 
 
 bool Mesh::closestHit(Ray &raig, HitInfo& info) const {
+    //this->construeix_triangles();
+    bool hit = false;
+    //float t_aux = 9999999;
+    for(Triangle triangle : triangles){
+        if(triangle.closestHit(raig, info)){// and info.t < t_aux){
+            //t_aux = info.t;
+            hit = true;
+        }
+    }
 
-    // TODO Fase 1: A implementar
-
-    return false;
+    return hit;
 
 }
 

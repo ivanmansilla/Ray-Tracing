@@ -41,6 +41,8 @@ private:
     QString nom;
     vector<Cara> cares; // cares de l'objecte
     vector<vec4> vertexs; // vertexs de l'objecte sense repetits
+    vector<Triangle> triangles; // cares convertides a triangles
+    int numTriangles;
 
     void load(QString filename);
     void construeix_triangles();

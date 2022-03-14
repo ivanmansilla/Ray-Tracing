@@ -7,7 +7,7 @@
 class Triangle: public Plane {
 public:
     Triangle() {};
-
+    Triangle(vec3 a, vec3 b, vec3 c);
     virtual ~Triangle() {};
     virtual bool closestHit(Ray &r, HitInfo &info) const override;
     virtual bool hasHit(const Ray &r) const override;
