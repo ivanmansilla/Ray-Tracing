@@ -17,15 +17,15 @@
           - Tots
         - [x] 3.1.b. Hit Triangle
           - Tots
-        - [ ] 3.1.c. Hit Boundary Object
-          - Estudiants que hi han participat
+        - [x] 3.1.c. Hit Boundary Object
+          - Lluc Slatosch Vives
         - [ ] 3.1.d. Hit Cilindre
           - Estudiants que hi han participat
     - Creació de REAL DATA
         - [ ] 3.2.a. Transformacions Translació i Escalat amb gizmos esferes
           - Estudiants que hi han participat
-        - [ ] 3.2.b. Pla de terra
-          - Estudiants que hi han participat
+        - [X] 3.2.b. Pla de terra
+          - Jordi Bujaldón Devesa
         - [ ] 3.2.c. Gizmo de Triangle
           - Estudiants que hi han participat
         - [ ] 3.2.d. Gizmo de Cilindre

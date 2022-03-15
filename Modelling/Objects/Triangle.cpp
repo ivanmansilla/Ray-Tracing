@@ -50,6 +50,12 @@ bool Triangle::closestHit(Ray &r, HitInfo &info) const {
         float v = (perp.length() / 2)/area;
         if(dot(n, perp) < 0) return false;
 
+        vec3 edge3 = b - a;
+        vec3 ap = info.p - a;
+        perp = cross(edge3, ap);
+        float w = (perp.length() / 2)/area;
+        if(dot(n, perp) < 0) return false;
+
     return true;
     }
     return false;

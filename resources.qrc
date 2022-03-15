@@ -28,5 +28,6 @@
         <file>resources/threeSpheres.json</file>
         <file>resources/triangles.json</file>
         <file>resources/plane.json</file>
+        <file>resources/teapot2.obj</file>
     </qresource>
 </RCC>

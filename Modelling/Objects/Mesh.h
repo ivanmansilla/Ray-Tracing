@@ -22,7 +22,7 @@ using namespace std;
 class Mesh : public Object
 {
 public:
-    Mesh() {};
+    Mesh();
     Mesh(const QString &fileName);
     Mesh(const QString &fileName, float data);
     virtual bool closestHit( Ray& r, HitInfo& info) const override;

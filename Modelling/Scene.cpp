@@ -37,14 +37,17 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
     /*if (baseObj->closestHit(raig, info)) {
         return true;
     }*/
+    float t_aux = 999999;
+    bool hit = false;
 
     for (unsigned int i = 0; i < objects.size(); i++) {
-        if (objects[i]->closestHit(raig, info)) {
-            return true;
+        if (objects[i]->closestHit(raig, info) && info.t < t_aux) {
+            t_aux = info.t;
+            hit = true;
         }
     }
 
-    return false;
+    return hit;
 }
 
 /*
