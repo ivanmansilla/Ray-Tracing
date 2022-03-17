@@ -15,7 +15,8 @@ Cylinder::Cylinder(float data) : Object(data)
     height = 1;
 }
 
-bool Cylinder::closestHit(const Ray &raig, HitInfo &info) const{
+bool Cylinder::closestHit(Ray &raig, HitInfo &info) const
+{
     float a,b,c;
     float x,z;
     float xo, zo;
@@ -30,27 +31,30 @@ bool Cylinder::closestHit(const Ray &raig, HitInfo &info) const{
     zo=raig.getOrigin().z - center.z;
 
     a = x*x + z*z;
-    b = 2*(xo*raig.getDirection().x + zo*raig.getDirection().z);
+    b = 2*(xo*x + zo*z);
     c = pow(xo, 2) + pow(zo, 2) - pow(radius,2);
     float discriminant=b*b-4*a*c;
 
-    if(discriminant>0){
+    if(discriminant>0)
+    {
         float temp = (-b - sqrtf(discriminant)) / (2 * a);
-        if( temp < t_min && temp > t_max t[0]<t_min ){
+        if ( temp < t_min && temp > t_max )
+        {
             info.t = temp;
             info.p = raig.pointAtParameter(info.t);
             info.normal = (vec3(info.p.x,center.y,info.p.z)-center)/radius;
-            info.mat_ptr = material;
+            info.mat_ptr = material.get();
+            return true;
         }
         temp= (-b + sqrtf(discriminant)) / (2 * a);
-        if (temp < t_max && temp > t_min)) {
+        if (temp < t_max && temp > t_min)
+        {
             info.t = temp;
             info.p = raig.pointAtParameter(info.t);
             info.normal = (info.p - center) / radius;
             info.mat_ptr = material.get();
             return true;
         }
-        return true;
     }
 
     return false;

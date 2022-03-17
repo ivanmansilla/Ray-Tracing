@@ -35,6 +35,9 @@ shared_ptr<Object> ObjectFactory::createObject(QString s, float data, OBJECT_TYP
     case SPHERE:
         o = make_shared<Sphere>(data);
         break;
+    case CYLINDER:
+        o = make_shared<Cylinder>(data);
+        break;
    /* case PLANE:
         o = make_shared<Plane>(data);
         break;

@@ -163,8 +163,8 @@ void Camera::print(int indentation) const
     QTextStream(stdout) << indent << "pixelsY:\t" << viewportY << "\n";
 
     QTextStream(stdout) << indent << "defocusBlur:\t"  << "\n";
-    QTextStream(stdout) << indent+4 << "enabled:\t" << defocus_blur << "\n";
-    QTextStream(stdout) << indent+4 << "aperture:\t" << lens_radius*2.0 << "\n";
+    QTextStream(stdout) << indent << "enabled:\t" << defocus_blur << "\n";
+    QTextStream(stdout) << indent << "aperture:\t" << lens_radius*2.0 << "\n";
 
 }
 

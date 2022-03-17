@@ -9,12 +9,13 @@
 class Cylinder : public Object
 {
 public:
+    Cylinder() {};
     Cylinder(vec3 c, float r, float h, float data);
     Cylinder(float data);
     virtual ~Cylinder() {}
 
-    virtual bool closestHit(Ray &r, HitInfo &info) const override;
-    virtual bool hasHit(const Ray &r) const override;
+    virtual bool closestHit(Ray &raig, HitInfo &info) const override;
+    virtual bool hasHit(const Ray &raig) const override;
     virtual void aplicaTG(shared_ptr<TG> tg) override;
 
     virtual void read(const QJsonObject &json) override;

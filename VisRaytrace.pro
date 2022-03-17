@@ -33,6 +33,7 @@ SOURCES += \
         Modelling/Objects/FittedPlane.cpp \
         Modelling/Objects/Mesh.cpp \
         Modelling/Objects/Triangle.cpp \
+        Modelling/Objects/Cylinder.cpp \
         Modelling/Scene.cpp \
         Modelling/Lights/Light.cpp \
         Modelling/Lights/PointLight.cpp \
@@ -98,6 +99,7 @@ HEADERS += \
     Modelling/Objects/Plane.h \
     Modelling/Objects/Sphere.h \
     Modelling/Objects/Triangle.h \
+    Modelling/Objects/Cylinder.h \
     Modelling/Ray.h \
     Modelling/Scene.h \
     Modelling/TG/TG.h \

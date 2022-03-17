@@ -106,12 +106,12 @@ void InfoMapping::print(int indentation) const
 {
     const QString indent(indentation * 2, ' ');
     QTextStream(stdout) << indent << "Real:\t \n";
-    QTextStream(stdout) << indent+2 << "minPoint:\t"  << Rxmin<<", "<< Rzmin<<"\n";
-    QTextStream(stdout) << indent+2 << "maxPoint:\t"  << Rxmax<<", "<< Rzmax<<"\n";
+    QTextStream(stdout) << indent << "minPoint:\t"  << Rxmin<<", "<< Rzmin<<"\n";
+    QTextStream(stdout) << indent << "maxPoint:\t"  << Rxmax<<", "<< Rzmax<<"\n";
 
     QTextStream(stdout) << indent << "Virtual:\t \n";
-    QTextStream(stdout) << indent+2 << "minPoint:\t"  << Vxmin<<", "<< Vymin<<", "<< Vzmin<<"\n";
-    QTextStream(stdout) << indent+2 << "maxPoint:\t"  << Vxmax<<", "<< Vymax<<", "<< Vzmin<<"\n";
+    QTextStream(stdout) << indent << "minPoint:\t"  << Vxmin<<", "<< Vymin<<", "<< Vzmin<<"\n";
+    QTextStream(stdout) << indent << "maxPoint:\t"  << Vxmax<<", "<< Vymax<<", "<< Vzmin<<"\n";
 
     QTextStream(stdout) << indent << "properties:\t\n";
     for (unsigned int i=0; i<props.size(); i++) {

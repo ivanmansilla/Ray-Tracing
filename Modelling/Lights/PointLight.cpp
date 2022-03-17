@@ -66,10 +66,10 @@ void PointLight::print(int indentation) const
     const QString indent(indentation * 2, ' ');
 
     QTextStream(stdout) << "Point Light" << "\n";
-    QTextStream(stdout) << indent + 2 << "position:\t" << pos[0] << ", "<< pos[1] << ", "<< pos[2] << "\n";
-    QTextStream(stdout) << indent + 2 << "a:\t" << a << "\n";
-    QTextStream(stdout) << indent + 2<< "b:\t" << b << "\n";
-    QTextStream(stdout) << indent + 2 << "c:\t" << c << "\n";
+    QTextStream(stdout) << indent << "position:\t" << pos[0] << ", "<< pos[1] << ", "<< pos[2] << "\n";
+    QTextStream(stdout) << indent << "a:\t" << a << "\n";
+    QTextStream(stdout) << indent << "b:\t" << b << "\n";
+    QTextStream(stdout) << indent << "c:\t" << c << "\n";
 
 }
 

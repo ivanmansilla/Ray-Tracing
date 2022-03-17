@@ -141,8 +141,8 @@ void SceneFactoryVirtual::print(int indentation) const
     for (unsigned int i =0; i< scene->objects.size(); i++) {
         auto value = ObjectFactory::getInstance().getIndexType (scene->objects[i]);
         QString className = ObjectFactory::getInstance().getNameType(value);
-        QTextStream(stdout) << indent+2 << "name:\t" << scene->objects[i]->name <<"\n";
-        QTextStream(stdout) << indent+2 << "type:\t" << className << "\n";
+        QTextStream(stdout) << indent << "name:\t" << scene->objects[i]->name <<"\n";
+        QTextStream(stdout) << indent << "type:\t" << className << "\n";
         scene->objects[i]->print(2);
     }
  }

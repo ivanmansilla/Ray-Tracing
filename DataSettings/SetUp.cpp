@@ -150,7 +150,7 @@ void SetUp::print(int indentation) const
     for (unsigned int i =0; i< lights.size(); i++) {
         auto value = LightFactory::getInstance().getIndexType (lights[i]);
         QString className = LightFactory::getInstance().getNameType(value);
-        QTextStream(stdout) << indent+2 << "type:\t" << className << "\n";
+        QTextStream(stdout) << indent << "type:\t" << className << "\n";
 
         lights[i]->print(2);
 
