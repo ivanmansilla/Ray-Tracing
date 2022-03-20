@@ -14,7 +14,7 @@ Scene::Scene(shared_ptr<Object> fp)
 {
     pmin.x = -0.5f;  pmin.y = -0.5f; pmin.z = -0.5f;
     pmax.x = 0.5f;  pmax.y = 0.5f; pmax.z = 0.5f;
-    //baseObj = fp;
+    baseObj = fp;
 }
 
 /*
@@ -34,9 +34,6 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
     // mes propera a l'observador, en el cas que n'hi hagi més d'una.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
 
-    /*if (baseObj->closestHit(raig, info)) {
-        return true;
-    }*/
     float t_aux = 999999;
     bool hit = false;
 
@@ -45,6 +42,10 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
             t_aux = info.t;
             hit = true;
         }
+    }
+
+    if (baseObj->closestHit(raig, info)) {
+        return true;
     }
 
     return hit;
