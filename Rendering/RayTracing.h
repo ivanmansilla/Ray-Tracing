@@ -10,6 +10,7 @@ class RayTracing
 {
 private:
     int maxNumSamples = 10;
+
 protected:
     // Scene: scena virtual dels objectes amb els seus materials i textures i les llums
     shared_ptr<Scene> scene;
