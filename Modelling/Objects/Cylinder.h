@@ -20,7 +20,6 @@ public:
     virtual void read(const QJsonObject &json) override;
     virtual void write(QJsonObject &json) const override;
     virtual void print(int indentation) const override;
-    virtual void aplicaTG(TG *t);
 
 private:
     vec3 center;

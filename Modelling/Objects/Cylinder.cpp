@@ -15,32 +15,78 @@ Cylinder::Cylinder(float data) : Object(data)
     height = 1;
 }
 
-bool Cylinder::closestHit(const Ray &raig, HitInfo &info) const
-{
+bool Cylinder::closestHit(const Ray &raig, HitInfo &info) const{
+    float a,b,c;
+    float x,z;
+    float xo, zo;
+    float t_min, t_max;
+
+    t_min=raig.getTmin();
+    t_max=raig.getTmax();
+
+    x=raig.getDirection().x;
+    z=raig.getDirection().z;
+    xo=raig.getOrigin().x - center.x;
+    zo=raig.getOrigin().z - center.z;
+
+    a = x*x + z*z;
+    b = 2*(xo*raig.getDirection().x + zo*raig.getDirection().z);
+    c = pow(xo, 2) + pow(zo, 2) - pow(radius,2);
+    float discriminant=b*b-4*a*c;
+
+    if(discriminant>0){
+        float temp = (-b - sqrtf(discriminant)) / (2 * a);
+        if( temp < t_min && temp > t_max t[0]<t_min ){
+            info.t = temp;
+            info.p = raig.pointAtParameter(info.t);
+            info.normal = (vec3(info.p.x,center.y,info.p.z)-center)/radius;
+            info.mat_ptr = material;
+        }
+        temp= (-b + sqrtf(discriminant)) / (2 * a);
+        if (temp < t_max && temp > t_min)) {
+            info.t = temp;
+            info.p = raig.pointAtParameter(info.t);
+            info.normal = (info.p - center) / radius;
+            info.mat_ptr = material.get();
+            return true;
+        }
+        return true;
+    }
+
     return false;
 }
 
+
 bool Cylinder::hasHit(const Ray &raig) const
 {
-    // copy from sphere
-    //  vec3 oc = raig.getOrigin() - center;
-    //  float a = dot(raig.getDirection(), raig.getDirection());
-    //  float b = dot(oc, raig.getDirection());
-    //  float c = dot(oc, oc) - radius * radius;
-    //  float discriminant = b * b - a * c;
-    //  if (discriminant > 0)
-    //  {
-    //      float temp = (-b - sqrt(discriminant)) / a;
-    //      if (temp < raig.getTmax() && temp > raig.getTmin())
-    //      {
-    //          return true;
-    //      }
-    //      temp = (-b + sqrt(discriminant)) / a;
-    //      if (temp < raig.getTmax() && temp > raig.getTmin())
-    //      {
-    //          return true;
-    //      }
-    //  }
+    float a,b,c;
+    float x,z;
+    float xo, zo;
+    float t_min, t_max;
+
+    t_min=raig.getTmin();
+    t_max=raig.getTmax();
+
+    x=raig.getDirection().x;
+    z=raig.getDirection().z;
+    xo=raig.getOrigin().x - center.x;
+    zo=raig.getOrigin().z - center.z;
+
+    a = x*x + z*z;
+    b = 2*(xo*raig.getDirection().x + zo*raig.getDirection().z);
+    c = pow(xo, 2) + pow(zo, 2) - pow(radius,2);
+    float discriminant=b*b-4*a*c;
+
+    if (discriminant > 0) {
+        float temp = (-b - sqrt(discriminant))/a;
+        if (temp < t_max && temp > t_min) {
+            return true;
+        }
+        temp = (-b + sqrtf(discriminant)) / (2 * a);
+        if (temp < t_max && temp > t_min) {
+            return true;
+        }
+    }
     return false;
 }
 
