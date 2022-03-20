@@ -29,5 +29,6 @@
         <file>resources/triangles.json</file>
         <file>resources/plane.json</file>
         <file>resources/teapot2.obj</file>
+        <file>resources/setupCustomRender.json</file>
     </qresource>
 </RCC>
