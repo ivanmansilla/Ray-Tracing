@@ -24,7 +24,7 @@ void RayTracing::rendering() {
             float u = (float(x)) / float(cam->viewportX);
             float v = (float(y)) / float(cam->viewportY);
 
-            // Apartat A.2 (Fase 2)
+            // Apartat A.2 (Fase 2). Antialising
             float randU, randV;
             for (int i=0; i<maxNumSamples; i++){
                 randU = abs(linearRand(u-0.001, u+0.001));
@@ -41,7 +41,7 @@ void RayTracing::rendering() {
                 }
             newCol = vec3(col[0]/maxNumSamples, col[1]/maxNumSamples, col[2]/maxNumSamples);
 
-            // Apartat A.3 (Fase 2)
+            // Apartat A.3 (Fase 2). Gamma correction
             vec3 colGamma = vec3(sqrt(newCol[0]), sqrt(newCol[1]),sqrt(newCol[2]));
             setPixelColor(colGamma, x, y);
         }
