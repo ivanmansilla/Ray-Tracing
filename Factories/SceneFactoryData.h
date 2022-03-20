@@ -25,9 +25,9 @@ public:
 
     vec3 getPuntBase(ObjectFactory::OBJECT_TYPES gyzmo, vec2 puntReal);
     // TODO: Fase 2: Translada del Gizmo
-    // shared_ptr<TranslateTG> translacioGizmo(shared_ptr<PropertyInfo>  propinfo, vec3 puntMonReal);
+    shared_ptr<TranslateTG> translacioGizmo(shared_ptr<PropertyInfo>  propinfo, shared_ptr<InfoMapping> infomap, vec3 puntMonReal);
     // TODO: Fase 2: Escala del Gizmo
-    // shared_ptr<ScaleTG>     escalatGizmo(shared_ptr<PropertyInfo> propinfo, float valorMonReal);
+    //shared_ptr<ScaleTG>     escalatGizmo(shared_ptr<PropertyInfo> propinfo, float valorMonReal);
     shared_ptr<Material>    mapeigMaterial(shared_ptr<PropertyInfo> propinfo, ColorMapStatic::COLOR_MAP_TYPES tCM, MaterialFactory::MATERIAL_TYPES tMat, double valorMonReal);
 
     shared_ptr<Scene> buildVirtualScene();

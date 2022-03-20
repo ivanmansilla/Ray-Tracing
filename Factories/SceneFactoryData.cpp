@@ -103,9 +103,9 @@ void SceneFactoryData:: write(QJsonObject &json) const
 
    QJsonObject jbase;
    // TO DO Fase 1: Cal escriure l'objecte base a fitxer: Descomenta les següents línies
-   scene->baseObj->write(jbase);
-   auto value = ObjectFactory::getInstance().getIndexType(scene->baseObj);
-   jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
+   //scene->baseObj->write(jbase);
+   //auto value = ObjectFactory::getInstance().getIndexType(scene->baseObj);
+   //jbase["type"]  = ObjectFactory::getInstance().getNameType(value);
 
    json["base"] = jbase;
 
@@ -144,6 +144,11 @@ shared_ptr<Scene> SceneFactoryData::buildVirtualScene() {
                                            MaterialFactory::getInstance().getIndexType(propinfo->material),
                                            mapping->props[i].second[j][2]));
 
+             shared_ptr<InfoMapping> infomap = mapping;
+             vec3 puntMonReal(mapping->props[i].second[j][0], mapping->props[i].second[j][1], mapping->props[i].second[j][2]);
+             translacioGizmo(propinfo, infomap, puntMonReal);
+             //shared_ptr<TranslateTG> tg = make_shared<TranslateTG>(1,1,1);
+             //o->aplicaTG(tg);
              // Afegir objecte a l'escena
              scene->objects.push_back(o);
          }
@@ -167,10 +172,23 @@ vec3 SceneFactoryData::getPuntBase(ObjectFactory::OBJECT_TYPES gyzmo, vec2 puntR
 
 // TODO: Fase 2
 // Cal implementar aquests mètodes i usar-lo
-// shared_ptr<TranslateTG> SceneFactoryData::translacioGizmo(shared_ptr<PropertyInfo> propinfo, vec3 puntMonReal) {
-// shared_ptr<ScaleTG> SceneFactoryData::escalatGizmo(shared_ptr<PropertyInfo> propinfo, float valorMonReal) {
+shared_ptr<TranslateTG> SceneFactoryData::translacioGizmo(shared_ptr<PropertyInfo> propinfo, shared_ptr<InfoMapping> infomap, vec3 puntMonReal) {
+        float oldX = (infomap->Rxmax - infomap->Rxmin);
+        float newX = (infomap->Vxmax - infomap->Vxmin);
+        float newValueX = (((puntMonReal[0] - infomap->Rxmin)*newX)/oldX + infomap->Vxmin);
 
-// }
+        float oldY = (infomap->Rzmax - infomap->Rzmin);
+        float newY = (infomap->Vymax - infomap->Vymin);
+        float newValueY = (((puntMonReal[1] - infomap->Rzmin)*newY)/oldY + infomap->Vymin);
+        vec3 puntMonVirtual(newValueX, newValueY, puntMonReal[2]);
+
+        shared_ptr<TranslateTG> translacio = make_shared<TranslateTG>(puntMonVirtual);
+        return translacio;
+}
+
+//shared_ptr<ScaleTG> SceneFactoryData::escalatGizmo(shared_ptr<PropertyInfo> propinfo, float valorMonReal) {
+
+//}
 
 shared_ptr<Material> SceneFactoryData::mapeigMaterial(shared_ptr<PropertyInfo> propinfo, ColorMapStatic::COLOR_MAP_TYPES tCM, MaterialFactory::MATERIAL_TYPES tMat, double valorMonReal) {
 

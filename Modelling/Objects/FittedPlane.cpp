@@ -42,6 +42,6 @@ void FittedPlane::print(int indentation) const {
 
     const QString indent(indentation * 2, ' ');
 
-    QTextStream(stdout) << indent << "pmin:\t" << pmin[0] << ", "<< pmin[1] << "\n";
+    QTextStream(stdout) << indent << "pmin:\t" << pmin[0] << ", "<< pmin[1]  << "\n";
     QTextStream(stdout) << indent << "pmax:\t" << pmax[0] << ", "<< pmax[1] << "\n";
 }

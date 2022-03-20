@@ -28,5 +28,8 @@
         <file>resources/threeSpheres.json</file>
         <file>resources/triangles.json</file>
         <file>resources/plane.json</file>
+        <file>resources/teapot2.obj</file>
+        <file>resources/setupCustomRender.json</file>
+        <file>resources/dadesEuropa_test.json</file>
     </qresource>
 </RCC>

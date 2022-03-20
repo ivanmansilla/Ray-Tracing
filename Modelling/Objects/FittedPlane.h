@@ -8,7 +8,7 @@ class FittedPlane: public Plane
 {
 public:
     FittedPlane();
-
+    virtual ~FittedPlane() {};
     virtual bool closestHit(Ray &r, HitInfo &info) const override;
 
     virtual void read(const QJsonObject &json) override;

@@ -34,15 +34,17 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
     // mes propera a l'observador, en el cas que n'hi hagi més d'una.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
 
-    if (baseObj->closestHit(raig, info)) {
-        return true;
-    }
 
     for (unsigned int i = 0; i < objects.size(); i++) {
         if (objects[i]->closestHit(raig, info)) {
-            return true;
+           return true;
+
         }
     }
+
+    /*if (baseObj->closestHit(raig, info)) {
+        return true;
+    }*/
 
     return false;
 }
@@ -81,9 +83,9 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
     if (closestHit(ray, h)) {
         // color = h.mat_ptr->Kd; // Pregunta g
         // color = h.normal; // Pregunt h
-         color = shading(h, lookFrom); // Pregunta i
+        //color = shading(h, lookFrom); // Pregunta i
         // Pregunta j --> Canviar paràmetres de setUpRenderOneSphere.json
-        //color = h.mat_ptr->Kd;  // Pregunta k
+        color = h.mat_ptr->Kd;  // Pregunta k
     } else {
         color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
     }

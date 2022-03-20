@@ -1,6 +1,13 @@
 #include "Triangle.h"
 
-
+Triangle::Triangle(vec3 _a, vec3 _b, vec3 _c): Plane()
+{
+   a = _a;
+   b = _b;
+   c = _c;
+   normal = cross(a-b, a-c);
+   point = a;
+}
 
 bool Triangle::closestHit(Ray &r, HitInfo &info) const {
     /*if (Plane::closestHit(r, info)) {
@@ -23,7 +30,7 @@ bool Triangle::closestHit(Ray &r, HitInfo &info) const {
     return false;
     */
 
-    // return Plane::closestHit(r, info); // Comprovació si funciona intersecció amb el pla
+   // return Plane::closestHit(r, info); // Comprovació si funciona intersecció amb el pla
     if (Plane::closestHit(r, info)){
         vec3 ab = b - a;
         vec3 ac = c - a;
@@ -41,6 +48,12 @@ bool Triangle::closestHit(Ray &r, HitInfo &info) const {
         vec3 cp = info.p - c;
         perp = cross(edge2, cp);
         float v = (perp.length() / 2)/area;
+        if(dot(n, perp) < 0) return false;
+
+        vec3 edge3 = b - a;
+        vec3 ap = info.p - a;
+        perp = cross(edge3, ap);
+        float w = (perp.length() / 2)/area;
         if(dot(n, perp) < 0) return false;
 
     return true;

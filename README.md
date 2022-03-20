@@ -17,8 +17,8 @@
           - Tots
         - [x] 3.1.b. Hit Triangle
           - Tots
-        - [ ] 3.1.c. Hit Boundary Object
-          - Estudiants que hi han participat
+        - [x] 3.1.c. Hit Boundary Object
+          - Lluc Slatosch Vives
         - [ ] 3.1.d. Hit Cilindre
           - Estudiants que hi han participat
     - Creació de REAL DATA
@@ -35,10 +35,10 @@
        
 
 - Fase 2
-    - [ ] Antialiasing
-      - Estudiants que hi han participat
-    - [ ] Gamma Correction
-      - Estudiants que hi han participat
+    - [x] Antialiasing
+      - Lluc Slatosch Vives
+    - [x] Gamma Correction
+      - Lluc Slatosch Vives
     - [ ] Blinn-Phong
       - Estudiants que hi han participat
     - [ ] Ombres amb objectes opacs

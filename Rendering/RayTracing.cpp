@@ -19,15 +19,31 @@ void RayTracing::rendering() {
         for (int x = 0; x < cam->viewportX; x++) {
 
             vec3 col(0, 0, 0);
+            vec3 newCol;
 
             float u = (float(x)) / float(cam->viewportX);
             float v = (float(y)) / float(cam->viewportY);
 
-            Ray r = cam->getRay(u, v);
+            // Apartat A.2 (Fase 2). Antialising
+            float randU, randV;
+            for (int i=0; i<maxNumSamples; i++){
+                randU = abs(linearRand(u-0.001, u+0.001));
+                randV = abs(linearRand(v-0.001, v+0.001));
+                if(randU > 1){
+                    randU = 1;
+                }
+                if(randV > 1){
+                    randV = 1;
+                }
+                Ray r = cam->getRay(randU, randV);
 
-            col = scene->RayColor(cam->getLookFrom(), r, 0);
+                col += scene->RayColor(cam->getLookFrom(), r, 0);
+                }
+            newCol = vec3(col[0]/maxNumSamples, col[1]/maxNumSamples, col[2]/maxNumSamples);
 
-            setPixelColor(col, x, y);
+            // Apartat A.3 (Fase 2). Gamma correction
+            vec3 colGamma = vec3(sqrt(newCol[0]), sqrt(newCol[1]),sqrt(newCol[2]));
+            setPixelColor(colGamma, x, y);
         }
     }
     std::cerr << "\nDone.\n";

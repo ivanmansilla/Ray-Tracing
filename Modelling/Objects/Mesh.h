@@ -22,7 +22,7 @@ using namespace std;
 class Mesh : public Object
 {
 public:
-    Mesh() {};
+    Mesh();
     Mesh(const QString &fileName);
     Mesh(const QString &fileName, float data);
     virtual bool closestHit( Ray& r, HitInfo& info) const override;
@@ -41,6 +41,8 @@ private:
     QString nom;
     vector<Cara> cares; // cares de l'objecte
     vector<vec4> vertexs; // vertexs de l'objecte sense repetits
+    vector<Triangle> triangles; // cares convertides a triangles
+    int numTriangles;
 
     void load(QString filename);
     void construeix_triangles();
