@@ -7,6 +7,9 @@
 #include "Factories/MaterialFactory.h"
 #include "DataSettings/Serializable.h"
 
+#include "Modelling/TG/TranslateTG.h"
+#include "Modelling/TG/ScaleTG.h"
+
 
 using namespace std;
 // Es la classe pare de tots els objectes que s'han de visualitzar.
