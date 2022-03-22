@@ -145,7 +145,6 @@ shared_ptr<Scene> SceneFactoryData::buildVirtualScene() {
                                            mapping->props[i].second[j][2]));
 
              vec3 puntMonReal(mapping->props[i].second[j][0], mapping->props[i].second[j][1], mapping->props[i].second[j][2]);
-             //translacioGizmo(propinfo, mapping, puntMonReal);
              shared_ptr<TranslateTG> tg = translacioGizmo(propinfo, mapping, puntMonReal);
              shared_ptr<ScaleTG> sg = escalatGizmo(propinfo, mapping->props[i].second[j][2]);
              o->aplicaTG(tg);
@@ -180,7 +179,7 @@ shared_ptr<TranslateTG> SceneFactoryData::translacioGizmo(shared_ptr<PropertyInf
 
         float oldY = (infomap->Rzmax - infomap->Rzmin);
         float newY = (infomap->Vymax - infomap->Vymin);
-        float newValueY = (((puntMonReal[2] - infomap->Rzmin)*newY)/oldY + infomap->Vymin);
+        float newValueY = (((puntMonReal[1] - infomap->Rzmin)*newY)/oldY + infomap->Vymin);
 
         vec3 puntMonVirtual(newValueX, 0.0, newValueY);
 
@@ -189,7 +188,7 @@ shared_ptr<TranslateTG> SceneFactoryData::translacioGizmo(shared_ptr<PropertyInf
 }
 
 shared_ptr<ScaleTG> SceneFactoryData::escalatGizmo(shared_ptr<PropertyInfo> propinfo, float valorMonReal) {
-    float objecteScale = normalize((valorMonReal - propinfo->maxValue)/(propinfo->maxValue - propinfo->minValue));
+    float objecteScale = normalize((valorMonReal - propinfo->minValue)/(propinfo->maxValue - propinfo->minValue));
     float escala = (0.25+(valorMonReal/2)*(objecteScale+0.01));
     vec3 scale(escala, escala, escala);
     shared_ptr<ScaleTG> matScale = make_shared<ScaleTG>(scale);
