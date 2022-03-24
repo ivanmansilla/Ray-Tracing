@@ -7,6 +7,18 @@ Triangle::Triangle(vec3 _a, vec3 _b, vec3 _c): Plane()
    c = _c;
    normal = cross(a-b, a-c);
    point = a;
+
+}
+
+Triangle::Triangle(vec3 _a, vec3 _b, vec3 _c, float _size): Plane()
+{
+   a = _a;
+   b = _b;
+   c = _c;
+   normal = cross(a-b, a-c);
+   point = a;
+   size=_size;
+
 }
 
 bool Triangle::closestHit(Ray &r, HitInfo &info) const {

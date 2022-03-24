@@ -10,7 +10,22 @@ bool FittedPlane::closestHit(Ray &r, HitInfo &info) const {
 
 void FittedPlane::aplicaTG(shared_ptr<TG> t)
 {
-    return Plane::aplicaTG(t);
+    if (dynamic_pointer_cast<shared_ptr<TranslateTG>>(t)) {
+
+        // Nomes movem el punt de pas
+        vec4 newp(this->point, 1.0);
+        newp = t->getTG() * newp;
+        this->point.x = newp.x;
+        this->point.y = newp.y;
+        this->point.z = newp.z;
+    }else if (dynamic_pointer_cast<ScaleTG>(t)){
+            vec4 cmin(pmin.x, 1.0, pmax.y, 1.0);
+            vec4 cmax(pmin.x, 1.0, pmax.y, 1.0);
+            cmin = t->getTG() * cmin;
+            cmax = t->getTG() * cmax;
+            pmin.x = cmin.x; pmin.y = cmin.z;
+            pmax.x = cmax.x; pmax.y = cmax.z;
+    }
 }
 
 void FittedPlane::read(const QJsonObject &json) {
