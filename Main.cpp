@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
     auto controller = make_shared<Controller>(Serializable::Json, "://resources/Cylinder", "://resources/setupCustomRender");
 
     // Exemple d'escena de dades carregada des de json:
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/data0", "://resources/setupRenderOneSphere");
+    //auto controller = make_shared<Controller>(Serializable::Json, "://resources/data0", "://resources/setupRenderOneSphere");
 
     // Pregunta m
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/threeSpheres", "://resources/setupRenderSpheres");

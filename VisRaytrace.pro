@@ -45,6 +45,7 @@ SOURCES += \
         Modelling/Objects/Object.cpp \
         Modelling/Objects/Plane.cpp \
         Modelling/Objects/Sphere.cpp \
+        Modelling/TG/ScaleTG.cpp \
         Modelling/TG/TG.cpp \
         Modelling/TG/TranslateTG.cpp \
         Rendering/Camera.cpp \
@@ -102,6 +103,7 @@ HEADERS += \
     Modelling/Objects/Cylinder.h \
     Modelling/Ray.h \
     Modelling/Scene.h \
+    Modelling/TG/ScaleTG.h \
     Modelling/TG/TG.h \
     Modelling/TG/TranslateTG.h \
     Rendering/Camera.h \
