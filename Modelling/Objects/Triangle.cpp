@@ -102,11 +102,11 @@ void Triangle::read(const QJsonObject &json) {
 
 
 void Triangle::aplicaTG(shared_ptr<TG> t) {
-    vec4 v1(this->a,1);
-    vec4 v2(this->b,1);
-    vec4 v3(this->c,1);
-
     if (dynamic_pointer_cast<shared_ptr<TranslateTG>>(t)) {
+        vec4 v1(this->a,1);
+        vec4 v2(this->b,1);
+        vec4 v3(this->c,1);
+
         v1=t->getTG()*v1;
         v1=t->getTG()*v1;
         v1=t->getTG()*v1;
@@ -114,6 +114,12 @@ void Triangle::aplicaTG(shared_ptr<TG> t) {
         this->a.x=v1.x; this->a.y=v1.y;this->a.z=v1.z;
         this->b.x=v2.x; this->b.y=v2.y;this->c.z=v2.z;
         this->c.x=v3.x; this->b.y=v3.y;this->c.z=v3.z;
+    }
+    else if (dynamic_pointer_cast<ScaleTG>(t))
+    {
+        a.x *= size;
+        b.y *= size;
+        c.z *= size;
     }
 
 }

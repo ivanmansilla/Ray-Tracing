@@ -156,6 +156,12 @@ void Cylinder::aplicaTG(shared_ptr<TG> t)
         center.y = c.y;
         center.z = c.z;
     }
+    else if (dynamic_pointer_cast<ScaleTG>(t))
+    {
+        vec4 v(1,1,1,1);
+        height = height * v.y;
+        radius = radius * v.x;
+    }
 }
 
 void Cylinder::read(const QJsonObject &json)
