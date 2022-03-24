@@ -10,7 +10,7 @@ class Cylinder : public Object
 {
 public:
     Cylinder() {};
-    Cylinder(vec3 c, float r, float h, float data);
+    Cylinder(vec3 c, float r, float h,vec3 axis, float data);
     Cylinder(float data);
     virtual ~Cylinder() {}
 
@@ -24,6 +24,7 @@ public:
 
 private:
     vec3 center;
+    vec3 axis;
     float radius;
     float height;
 };

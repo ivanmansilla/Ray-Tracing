@@ -8,6 +8,11 @@ bool FittedPlane::closestHit(Ray &r, HitInfo &info) const {
     return Plane::closestHit(r, info);
 }
 
+void FittedPlane::aplicaTG(shared_ptr<TG> t)
+{
+    return Plane::aplicaTG(t);
+}
+
 void FittedPlane::read(const QJsonObject &json) {
     Plane::read(json);
 

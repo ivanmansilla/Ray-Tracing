@@ -31,5 +31,6 @@
         <file>resources/teapot2.obj</file>
         <file>resources/setupCustomRender.json</file>
         <file>resources/dadesEuropa_test.json</file>
+        <file>resources/Cylinder.json</file>
     </qresource>
 </RCC>
