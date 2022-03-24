@@ -82,10 +82,10 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
 
     if (closestHit(ray, h)) {
         // color = h.mat_ptr->Kd; // Pregunta g
-        // color = h.normal; // Pregunt h
+         color = h.normal; // Pregunt h
         //color = shading(h, lookFrom); // Pregunta i
         // Pregunta j --> Canviar paràmetres de setUpRenderOneSphere.json
-        color = h.mat_ptr->Kd;  // Pregunta k
+        //color = h.mat_ptr->Kd;  // Pregunta k
     } else {
         color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
     }

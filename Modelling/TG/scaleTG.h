@@ -1,11 +1,14 @@
 #ifndef SCALETG_H
 #define SCALETG_H
 
+#include "TG.h"
 
-class ScaleTG
+class ScaleTG : public TG
 {
 public:
-    ScaleTG();
+    glm::vec3 scale;
+    ScaleTG(glm::vec3 scal);
+    virtual ~ScaleTG();
 };
 
 #endif // SCALETG_H
