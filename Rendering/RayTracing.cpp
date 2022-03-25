@@ -18,24 +18,24 @@ void RayTracing::rendering() {
         std::cerr << "\rScanlines remaining: " << y << ' ' << std::flush;  // Progrés del càlcul
         for (int x = 0; x < cam->viewportX; x++) {
 
+            // Apartat A.2 (Fase 2). Antialising
             vec3 col(0, 0, 0);
             vec3 newCol;
+            int vx = cam->viewportX;
+            float factDiv = (float)1/(float)vx;
 
-            float u = (float(x)) / float(cam->viewportX);
-            float v = (float(y)) / float(cam->viewportY);
-
-            // Apartat A.2 (Fase 2). Antialising
-            float randU, randV;
             for (int i=0; i<maxNumSamples; i++){
-                randU = abs(linearRand(u-0.001, u+0.001));
-                randV = abs(linearRand(v-0.001, v+0.001));
-                if(randU > 1){
-                    randU = 1;
+                float sumUV = linearRand(0.0f, factDiv);
+
+                float u = (float(x)) / float(cam->viewportX) + sumUV;
+                float v = (float(y)) / float(cam->viewportY) + sumUV;
+                if(u > 1){
+                    u = 1;
                 }
-                if(randV > 1){
-                    randV = 1;
+                if(v > 1){
+                    v = 1;
                 }
-                Ray r = cam->getRay(randU, randV);
+                Ray r = cam->getRay(u, v);
 
                 col += scene->RayColor(cam->getLookFrom(), r, 0);
                 }

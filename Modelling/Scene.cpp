@@ -42,9 +42,9 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
         }
     }
 
-    /*if (baseObj->closestHit(raig, info)) {
+    if (baseObj != nullptr && baseObj->closestHit(raig, info)) {
         return true;
-    }*/
+    }
 
     return false;
 }
@@ -82,12 +82,18 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
 
     if (closestHit(ray, h)) {
         // color = h.mat_ptr->Kd; // Pregunta g
-         color = h.normal; // Pregunt h
+        // color = h.normal; // Pregunt h
         //color = shading(h, lookFrom); // Pregunta i
         // Pregunta j --> Canviar paràmetres de setUpRenderOneSphere.json
         //color = h.mat_ptr->Kd;  // Pregunta k
+        color = shading(h,lookFrom);
     } else {
-        color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
+        if(backgroundInRecurvise){
+           color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
+        }
+        else{
+            color = globalLight;
+        }
     }
 
     return color;
@@ -126,14 +132,29 @@ void Scene::setTopBackground(vec3 color) {
 ** FASE 1: Càlcul de la il.luminació en un punt (Blinn-Phong i ombres)
 */
 vec3 Scene::shading(HitInfo& info, vec3 lookFrom) {
-    vec3 color;
-    lookFrom = normalize(lookFrom); // Normalitzem per a que la distància euclidiana acabi donant entre 0 i 1.
-    vec3 p = normalize(info.p);
-    float dist = sqrt(pow(lookFrom[0]-p[0],2) + pow(lookFrom[1]-p[1],2) + pow(lookFrom[2]-p[2],2)); // Distancia euclidiana entre l'observador i el punt on intersecta normalitzats
-    color = normalize(info.mat_ptr->Ka) * dist; // color calculat amb la distància euclidiana
-    //color = vec3(info.t/2, info.t/2, info.t/2); // Color segons la distància (normalització("/2") hardcodejada per OneSphere
+    vec3 color,colora, colord, colors, colorg;
+    colora = info.mat_ptr->Ka * lights[0]->getIa(); // Component ambient
+    colord = info.mat_ptr->Kd * lights[0]->getId() * dot(normalize((lights[0]->vectorL(info.p))), normalize(info.normal)); // Component difusa
+    vec3 h = (lights[0]->vectorL(info.p) + lookFrom) / (normalize(lights[0]->vectorL(info.p)) + normalize(lookFrom)); // Vector h
+    colors = info.mat_ptr->Ks * lights[0]->getIs() * pow(dot(normalize(info.normal), normalize(h)), info.mat_ptr->shininess); // Component especular
+
+    colorg = info.mat_ptr->Ka * globalLight; // Llum ambient global
+
+    /* Atenuació amb profunditat
+    colord *= normalize((1/pow(info.t, 2)));
+    colors *= normalize((1/pow(info.t, 2)));
+    */
+
+    color = colora+ colord + colors;
     return color;
 }
+void Scene::setLights(std::vector<shared_ptr<Light>> plights) {
+    lights = plights;
+}
+void Scene::setGlobalLight(vec3 light){
+    globalLight = light;
+}
+
 
 /*
 ** TODO: Funcio RayColor es la funcio recursiva del RayTracing.
@@ -146,9 +167,8 @@ vec3 Scene::shading(HitInfo& info, vec3 lookFrom) {
 /*
  * TODO: FASE 2
  * incloure les llums a l'escena i la il.luminacio global
- * void setLights(std::vector<shared_ptr<Light>> lights) {}
- * void setGlobalLight(vec3 light);
  */
+
 
 
 

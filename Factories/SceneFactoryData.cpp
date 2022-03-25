@@ -144,11 +144,11 @@ shared_ptr<Scene> SceneFactoryData::buildVirtualScene() {
                                            MaterialFactory::getInstance().getIndexType(propinfo->material),
                                            mapping->props[i].second[j][2]));
 
+             shared_ptr<InfoMapping> infomap = mapping;
              vec3 puntMonReal(mapping->props[i].second[j][0], mapping->props[i].second[j][1], mapping->props[i].second[j][2]);
-             shared_ptr<TranslateTG> tg = translacioGizmo(propinfo, mapping, puntMonReal);
-             shared_ptr<ScaleTG> sg = escalatGizmo(propinfo, mapping->props[i].second[j][2]);
-             o->aplicaTG(tg);
-             o->aplicaTG(sg);
+             translacioGizmo(propinfo, infomap, puntMonReal);
+             //shared_ptr<TranslateTG> tg = make_shared<TranslateTG>(1,1,1);
+             //o->aplicaTG(tg);
              // Afegir objecte a l'escena
              scene->objects.push_back(o);
          }
@@ -180,21 +180,15 @@ shared_ptr<TranslateTG> SceneFactoryData::translacioGizmo(shared_ptr<PropertyInf
         float oldY = (infomap->Rzmax - infomap->Rzmin);
         float newY = (infomap->Vymax - infomap->Vymin);
         float newValueY = (((puntMonReal[1] - infomap->Rzmin)*newY)/oldY + infomap->Vymin);
+        vec3 puntMonVirtual(newValueX, newValueY, puntMonReal[2]);
 
-        vec3 puntMonVirtual(newValueX, 0.0, newValueY);
-
-        shared_ptr<TranslateTG> matTranslacio = make_shared<TranslateTG>(puntMonVirtual);
-        return matTranslacio;
+        shared_ptr<TranslateTG> translacio = make_shared<TranslateTG>(puntMonVirtual);
+        return translacio;
 }
 
-shared_ptr<ScaleTG> SceneFactoryData::escalatGizmo(shared_ptr<PropertyInfo> propinfo, float valorMonReal) {
-    float objecteScale = normalize((valorMonReal - propinfo->minValue)/(propinfo->maxValue - propinfo->minValue));
-    float escala = (0.25+(valorMonReal/2)*(objecteScale+0.01));
-    vec3 scale(escala, escala, escala);
-    shared_ptr<ScaleTG> matScale = make_shared<ScaleTG>(scale);
-    return matScale;
+//shared_ptr<ScaleTG> SceneFactoryData::escalatGizmo(shared_ptr<PropertyInfo> propinfo, float valorMonReal) {
 
-}
+//}
 
 shared_ptr<Material> SceneFactoryData::mapeigMaterial(shared_ptr<PropertyInfo> propinfo, ColorMapStatic::COLOR_MAP_TYPES tCM, MaterialFactory::MATERIAL_TYPES tMat, double valorMonReal) {
 

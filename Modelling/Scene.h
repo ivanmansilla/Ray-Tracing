@@ -82,8 +82,10 @@ public:
     // Implementar els mètodes següents
     // Recordar cridar-los per omplir les dades des de fitxer
 
-    // void setGlobalLight(vec3 light);
-    // void setLights(std::vector<shared_ptr<Light>> lights);
+    void setGlobalLight(vec3 light);
+    void setLights(std::vector<shared_ptr<Light>> plights);
+    vector<shared_ptr<Light>> lights;
+
     shared_ptr<Object> baseObj;
 
 private:
