@@ -32,5 +32,6 @@
         <file>resources/setupCustomRender.json</file>
         <file>resources/dadesEuropa_test.json</file>
         <file>resources/Cylinder.json</file>
+        <file>resources/custom.json</file>
     </qresource>
 </RCC>

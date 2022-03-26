@@ -1,5 +1,4 @@
 #include "Scene.h"
-#include <iostream>
 
 Scene::Scene()
 {
@@ -74,7 +73,7 @@ bool Scene::hasHit (const Ray& raig) const {
 ** TODO: Fase 2 per a tractar reflexions i transparències
 **
 */
-vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
+vec3 Scene::RayColor(vec3 lookFrom, Ray &ray, int depth ) {
     vec3 color;
     vec3 ray2;
     HitInfo h;
@@ -85,14 +84,14 @@ vec3 Scene::RayColor (vec3 lookFrom, Ray &ray, int depth ) {
         // color = h.normal; // Pregunt h
         //color = shading(h, lookFrom); // Pregunta i
         // Pregunta j --> Canviar paràmetres de setUpRenderOneSphere.json
-        //color = h.mat_ptr->Kd;  // Pregunta k
+        // color = h.mat_ptr->Kd;  // Pregunta k
         color = shading(h,lookFrom);
     } else {
         if(backgroundInRecurvise){
-           color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
+            color = globalLight;
         }
         else{
-            color = globalLight;
+            color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
         }
     }
 
@@ -132,25 +131,58 @@ void Scene::setTopBackground(vec3 color) {
 ** FASE 1: Càlcul de la il.luminació en un punt (Blinn-Phong i ombres)
 */
 vec3 Scene::shading(HitInfo& info, vec3 lookFrom) {
-    vec3 color,colora, colord, colors, colorg;
-    colora = info.mat_ptr->Ka * lights[0]->getIa(); // Component ambient
-    colord = info.mat_ptr->Kd * lights[0]->getId() * dot(normalize((lights[0]->vectorL(info.p))), normalize(info.normal)); // Component difusa
-    vec3 h = (lights[0]->vectorL(info.p) + lookFrom) / (normalize(lights[0]->vectorL(info.p)) + normalize(lookFrom)); // Vector h
-    colors = info.mat_ptr->Ks * lights[0]->getIs() * pow(dot(normalize(info.normal), normalize(h)), info.mat_ptr->shininess); // Component especular
+    return blinnPhong(info.p, info.normal, info.mat_ptr, lookFrom);
+}
 
-    colorg = info.mat_ptr->Ka * globalLight; // Llum ambient global
+vec3 Scene::blinnPhong(vec3 point, vec3 normal, Material* material, vec3 lookFrom) {
+    vec3 color;
 
-    /* Atenuació amb profunditat
-    colord *= normalize((1/pow(info.t, 2)));
-    colors *= normalize((1/pow(info.t, 2)));
-    */
+    for (unsigned int i = 0; i < lights.size(); i++) {
+        // Part ambient
+        vec3 ambient = material->Ka * lights[i]->getIa();
 
-    color = colora+ colord + colors;
+        // Part difusa
+        vec3 L = lights[i]->vectorL(point);
+        float angleD = dot(normalize(L), normalize(normal));
+        vec3 difusa = material->Kd * lights[i]->getId() * glm::max(angleD, 0.f);
+
+        // Part especular
+        vec3 H = (normalize(L) + normalize(lookFrom)) / abs(normalize(L) + normalize(lookFrom));
+        float angleS = dot(normalize(normal), normalize(H));
+        vec3 especular = material->Ks * lights[i]->getIs() * glm::pow(glm::max(angleS, 0.f), material->shininess);
+
+        // Mirar como hacer atenuacion en profundidad
+        float attenuation = lights[i]->attenuation(lookFrom);
+
+        vec3 p = point + FLT_EPSILON * L;
+        float distance = lights[i]->distanceToLight(p);
+
+        Ray r(p, L, 0.01, distance);
+
+        float ombra = calculOmbra(r);
+
+        color += ambient + ((difusa + especular) * attenuation * ombra);
+    }
+
+    color += (globalLight * material->Ka);    // Afegim l'ambient global
+
     return color;
 }
+
+float Scene::calculOmbra(Ray raig) {
+    HitInfo info;
+
+    if (closestHit(raig, info)) {
+        return 0.0;
+    } else {
+        return 1.0;
+    }
+}
+
 void Scene::setLights(std::vector<shared_ptr<Light>> plights) {
     lights = plights;
 }
+
 void Scene::setGlobalLight(vec3 light){
     globalLight = light;
 }

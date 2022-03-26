@@ -18,7 +18,9 @@ int main(int argc, char **argv) {
     //auto controller = make_shared<Controller>(Serializable::Json, "://resources/data0", "://resources/setupRenderOneSphere");
 
     // Esferes
-    auto controller = make_shared<Controller>(Serializable::Json, "://resources/twoSpheres", "://resources/setupRenderTwoSpheres");
+    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/twoSpheres", "://resources/setupRenderTwoSpheres");
+    auto controller = make_shared<Controller>(Serializable::Json, "://resources/custom", "://resources/setupCustomRender");
+    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/spheresLambertianes", "://resources/setupRenderSpheres");
 
     // 4.2- apartado b
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropa_test", "://resources/setupCustomRender");

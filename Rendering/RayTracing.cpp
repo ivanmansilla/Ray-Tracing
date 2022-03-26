@@ -38,7 +38,8 @@ void RayTracing::rendering() {
                 Ray r = cam->getRay(u, v);
 
                 col += scene->RayColor(cam->getLookFrom(), r, 0);
-                }
+            }
+
             newCol = vec3(col[0]/maxNumSamples, col[1]/maxNumSamples, col[2]/maxNumSamples);
 
             // Apartat A.3 (Fase 2). Gamma correction

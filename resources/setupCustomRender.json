@@ -2,14 +2,27 @@
 "renderType": "ONLINE",
 "output": "resultat.ppm",
 "camera": {
-    "lookFrom": [0.0, 5.0, -5.0],
-    "lookAt:": [0, 0, 0],
+    "lookFrom": [13.0, 2.0, 3.0],
+    "lookAt": [0, 0, 0],
     "vup": [0, 1, 0],
-    "vfov": 90.0,
-    "aspectRatio": 1.77,
-    "pixelsX": 400
+    "vfov": 20.0,
+    "aspectRatio": 2,
+    "pixelsX": 600
 },
+"globalLight": [0.1, 0.1, 0.1],
+"lights" : [
+{
+ "type": "pointLight",
+  "Ia": [0.3, 0.3, 0.3],
+  "Id": [0.7, 0.7, 0.7],
+  "Is": [1.0, 1.0, 1.0],
+  "a": 0.5,
+  "b": 0.0,
+  "c": 0.01,
+  "position": [2.0, 8.0, 10.0]
+  }
+ ],
+ "background": false,
  "colorTopBackground": [0.5, 0.7, 1],
- "colorDownBackground": [ 1.0, 1.0, 1.0]
-}
-
+ "colorDownBackground": [ 1, 1, 1]
+ }
