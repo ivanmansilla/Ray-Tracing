@@ -5,7 +5,14 @@ FittedPlane::FittedPlane() {
 }
 
 bool FittedPlane::closestHit(Ray &r, HitInfo &info) const {
-    return Plane::closestHit(r, info);
+    if(Plane::closestHit(r, info)){
+        if ((info.p[0] > (pmin.x)) && (info.p[0] < (pmax.x)) && (info.p[2] < (pmax.y)) && (info.p[2] > (pmin.y))){
+            info.mat_ptr = this->material.get();
+            return true;
+        }
+    }
+    return false;
+
 }
 
 void FittedPlane::aplicaTG(shared_ptr<TG> t)

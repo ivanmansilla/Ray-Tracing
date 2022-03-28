@@ -18,8 +18,10 @@ shared_ptr<Object> ObjectFactory::createObject(OBJECT_TYPES t)
         break;
     case FITTEDPLANE:
         o = make_shared<FittedPlane>();
+        break;
     case CYLINDER:
         o = make_shared<Cylinder>();
+        break;
     default:
         break;
     }
