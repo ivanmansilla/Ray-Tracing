@@ -2,10 +2,10 @@
 "renderType": "ONLINE",
 "output": "resultat.ppm",
 "camera": {
-    "lookFrom": [13.0, 2.0, 3.0],
+    "lookFrom": [4.0, 2.0, 3.0],
     "lookAt": [0, 0, 0],
     "vup": [0, 1, 0],
-    "vfov": 20.0,
+    "vfov": 40.0,
     "aspectRatio": 2,
     "pixelsX": 600
 },

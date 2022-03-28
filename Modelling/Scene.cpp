@@ -33,19 +33,29 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
     // mes propera a l'observador, en el cas que n'hi hagi més d'una.
     // Cada vegada que s'intersecta un objecte s'ha d'actualitzar el HitInfo del raig.
 
+    bool hit = false;
+    float tmin = INFINITY;
+    HitInfo infoActual;
 
     for (unsigned int i = 0; i < objects.size(); i++) {
-        if (objects[i]->closestHit(raig, info)) {
-           return true;
-
+        if (objects[i]->closestHit(raig, infoActual)) {
+            if (tmin > infoActual.t) {
+                info = infoActual;
+                tmin = infoActual.t;
+                hit = true;
+            }
         }
     }
 
     if (baseObj != nullptr && baseObj->closestHit(raig, info)) {
-        return true;
+        if (tmin > infoActual.t) {
+            info = infoActual;
+            tmin = infoActual.t;
+            hit = true;
+        }
     }
 
-    return false;
+    return hit;
 }
 
 /*
@@ -55,6 +65,16 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
 **
 */
 bool Scene::hasHit (const Ray& raig) const {
+    for (unsigned int i = 0; i < objects.size(); i++) {
+        if (objects[i]->hasHit(raig)) {
+           return true;
+
+        }
+    }
+
+//    if (baseObj != nullptr && baseObj->closestHit(raig, info)) {
+//        return true;
+//    }
 
     return false;
 }
@@ -131,11 +151,16 @@ void Scene::setTopBackground(vec3 color) {
 ** FASE 1: Càlcul de la il.luminació en un punt (Blinn-Phong i ombres)
 */
 vec3 Scene::shading(HitInfo& info, vec3 lookFrom) {
-    return blinnPhong(info.p, info.normal, info.mat_ptr, lookFrom);
+    return blinnPhong(info, lookFrom);
 }
 
-vec3 Scene::blinnPhong(vec3 point, vec3 normal, Material* material, vec3 lookFrom) {
+vec3 Scene::blinnPhong(HitInfo &info, vec3 lookFrom) {
     vec3 color;
+    vec3 point = info.p;
+    vec3 normal = info.normal;
+    Material* material = info.mat_ptr;
+
+    color = (globalLight * material->Ka);    // Afegim l'ambient global
 
     for (unsigned int i = 0; i < lights.size(); i++) {
         // Part ambient
@@ -151,28 +176,28 @@ vec3 Scene::blinnPhong(vec3 point, vec3 normal, Material* material, vec3 lookFro
         float angleS = dot(normalize(normal), normalize(H));
         vec3 especular = material->Ks * lights[i]->getIs() * glm::pow(glm::max(angleS, 0.f), material->shininess);
 
-        // Mirar como hacer atenuacion en profundidad
+        // Agafem l'atenuacio
         float attenuation = lights[i]->attenuation(lookFrom);
 
+        // Solucionar shading acne
         vec3 p = point + FLT_EPSILON * L;
         float distance = lights[i]->distanceToLight(p);
 
+        // Raig objecte-llum
         Ray r(p, L, 0.01, distance);
 
+        // Calcul ombra
         float ombra = calculOmbra(r);
 
+        // Formula Blinn-Phong
         color += ambient + ((difusa + especular) * attenuation * ombra);
     }
-
-    color += (globalLight * material->Ka);    // Afegim l'ambient global
 
     return color;
 }
 
 float Scene::calculOmbra(Ray raig) {
-    HitInfo info;
-
-    if (closestHit(raig, info)) {
+    if (hasHit(raig)) {
         return 0.0;
     } else {
         return 1.0;

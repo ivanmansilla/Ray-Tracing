@@ -92,7 +92,7 @@ private:
     // FASE 1: Càlcul de la il.luminació en un punt (Blinn-Phong i ombres)
     vec3 shading(HitInfo& info, vec3 lookFrom);
 
-    vec3 blinnPhong(vec3 point, vec3 normal, Material* material, vec3 lookFrom);
+    vec3 blinnPhong(HitInfo& info, vec3 lookFrom);
 
     float calculOmbra(Ray r);
 
