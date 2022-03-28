@@ -47,7 +47,7 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
         }
     }
 
-    if (baseObj != nullptr && baseObj->closestHit(raig, info)) {
+    if (baseObj != nullptr && baseObj->closestHit(raig, infoActual)) {
         if (tmin > infoActual.t) {
             info = infoActual;
             tmin = infoActual.t;
@@ -105,7 +105,16 @@ vec3 Scene::RayColor(vec3 lookFrom, Ray &ray, int depth ) {
         //color = shading(h, lookFrom); // Pregunta i
         // Pregunta j --> Canviar paràmetres de setUpRenderOneSphere.json
         // color = h.mat_ptr->Kd;  // Pregunta k
-        color = shading(h,lookFrom);
+        // color = shading(h,lookFrom);
+
+        if (depth == MAXDEPTH) {
+            color += shading(h, lookFrom);
+        } else {
+            Ray sec;
+            if (h.mat_ptr->getOneScatteredRay(ray, h, sec)) {
+                color += shading(h, lookFrom) + h.mat_ptr->getAttenuation(ray, h) * RayColor(info.p, sec, depth+1);
+            }
+        }
     } else {
         if(backgroundInRecurvise){
             color = globalLight;

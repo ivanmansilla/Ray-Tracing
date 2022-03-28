@@ -21,8 +21,9 @@ vec3 Lambertian::getAttenuation(const Ray& r_in, const HitInfo& rec) const  {
 }
 
 bool Lambertian::getOneScatteredRay(const Ray& r_in, const HitInfo& rec, Ray& r_out) const  {
-    vec3 target = rec.p + rec.normal + Hitable::RandomInSphere();
-    r_out =  Ray(rec.p, target-rec.p);
+    vec3 p0 = rec.p + FLT_EPSILON * r_in.getDirection();
+    vec3 target = p0 + rec.normal + Hitable::RandomInSphere();
+    r_out =  Ray(p0, target-rec.p);
     return true;
 }
 bool Lambertian::getMultipleScatteredRays(const Ray& r_in, const HitInfo& rec,  std::vector<Ray>& r_out) const  {
