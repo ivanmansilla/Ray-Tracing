@@ -105,7 +105,7 @@ private:
     //Guarda si en les iteracions recursives de rayColor() en cas de no haver-hi hit
     // s'utilitza el color
     //de background o la llum ambient global
-    bool backgroundInRecurvise = false;
+    bool backgroundInRecurvise = true;
 
     //Color de dalt del background de la imatge
     vec3 colorTop;

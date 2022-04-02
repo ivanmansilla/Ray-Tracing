@@ -67,7 +67,6 @@ bool Scene::hasHit (const Ray& raig) const {
     for (unsigned int i = 0; i < objects.size(); i++) {
         if (objects[i]->hasHit(raig)) {
            return true;
-
         }
     }
 
@@ -92,7 +91,7 @@ bool Scene::hasHit (const Ray& raig) const {
 ** TODO: Fase 2 per a tractar reflexions i transparències
 **
 */
-vec3 Scene::RayColor(vec3 lookFrom, Ray &ray, int depth ) {
+vec3 Scene::RayColor(vec3 lookFrom, Ray &ray, int depth) {
     vec3 color;
     vec3 ray2;
     HitInfo h;
@@ -115,12 +114,7 @@ vec3 Scene::RayColor(vec3 lookFrom, Ray &ray, int depth ) {
             }
         }
     } else {
-        if(backgroundInRecurvise){
-            color = globalLight;
-        }
-        else{
-            color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
-        }
+        color = (vec3((ray2.y + 1)*0.5)*colorTop) + (vec3(1-((ray2.y + 1)*0.5))*colorDown);
     }
 
     return color;
