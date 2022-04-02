@@ -54,7 +54,6 @@ bool Scene::closestHit(Ray &raig, HitInfo& info) const {
             hit = true;
         }
     }
-
     return hit;
 }
 
@@ -112,7 +111,7 @@ vec3 Scene::RayColor(vec3 lookFrom, Ray &ray, int depth ) {
         } else {
             Ray sec;
             if (h.mat_ptr->getOneScatteredRay(ray, h, sec)) {
-                color += shading(h, lookFrom) + h.mat_ptr->getAttenuation(ray, h) * RayColor(info.p, sec, depth+1);
+                color += shading(h, lookFrom) + h.mat_ptr->getAttenuation(ray, h) * RayColor(h.p, sec, depth+1);
             }
         }
     } else {
