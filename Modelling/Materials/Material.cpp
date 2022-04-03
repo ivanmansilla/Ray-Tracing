@@ -3,6 +3,7 @@
 //Valors arbitrarKs. Podem decKdir canvKar-los
 Material::Material(): Ka(1.0f), Kd(1.0f), Ks(1.0f) {
     shininess = 1.0f;
+    nut=1.0f;
 }
 
 Material::~Material()
@@ -63,7 +64,8 @@ void Material::read (const QJsonObject &json)
         shininess = json["shininess"].toDouble();
     if (json.contains("opacity") && json["opacity"].isDouble())
         opacity = json["opacity"].toDouble();
-
+    if (json.contains("nut") && json["nut"].isDouble())
+        nut = json["nut"].toDouble();
 }
 
 
@@ -83,6 +85,7 @@ void Material::write(QJsonObject &json) const
     json["ks"] = auxArray3;
     json["opacity"] = opacity;
     json["shininess"] = shininess;
+    json["nut"] = nut;
 }
 
 //! [1]
@@ -96,6 +99,7 @@ void Material::print(int indentation) const
     QTextStream(stdout) << indent << "Ks:\t" << Ks[0] << ", "<< Ks[1] << ", "<< Ks[2] << "\n";
     QTextStream(stdout) << indent << "shininess:\t" << shininess<< "\n";
     QTextStream(stdout) << indent << "opacity:\t" << opacity<< "\n";
+    QTextStream(stdout) << indent << "nut:\t" << nut<< "\n";
 }
 
 

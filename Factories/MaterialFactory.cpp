@@ -4,14 +4,14 @@ shared_ptr<Material> MaterialFactory::createMaterial(MATERIAL_TYPES t) {
     shared_ptr<Material> m;
     switch (t) {
     case LAMBERTIAN:
-        m = make_shared<Lambertian>();
-        break;
+        return  make_shared<Lambertian>();
     case METAL:
-        m = make_shared<Metal>();
+        return make_shared<Metal>();
+    case TRANSPARENT:
+        return make_shared<Transparent>();
     default:
-        break;
+        return  make_shared<Lambertian>();
     }
-    return m;
 }
 
 
@@ -23,6 +23,8 @@ shared_ptr<Material> MaterialFactory::createMaterial(vec3 a, vec3 d, vec3 s, flo
         break;
     case METAL:
         m = make_shared<Metal>(a, d, s, beta, opacity);
+    case TRANSPARENT:
+        m = make_shared<Transparent>(a, d, s, beta, opacity);
     default:
         break;
     }
@@ -35,6 +37,9 @@ MaterialFactory::MATERIAL_TYPES MaterialFactory::getIndexType(shared_ptr<Materia
     }
     if (dynamic_pointer_cast<Metal>(m) != nullptr) {
         return MATERIAL_TYPES::METAL;
+    }
+    if (dynamic_pointer_cast<Transparent>(m) != nullptr) {
+        return MATERIAL_TYPES::TRANSPARENT;
     }
     return MATERIAL_TYPES::LAMBERTIAN;
 }

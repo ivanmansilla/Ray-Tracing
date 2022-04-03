@@ -31,6 +31,7 @@ SOURCES += \
         Modelling/Animation.cpp \
         Modelling/Hitable.cpp \
         Modelling/Materials/Metal.cpp \
+        Modelling/Materials/Transparent.cpp \
         Modelling/Objects/FittedPlane.cpp \
         Modelling/Objects/Mesh.cpp \
         Modelling/Objects/Triangle.cpp \
@@ -95,6 +96,7 @@ HEADERS += \
     Modelling/Materials/Material.h \
     Modelling/Materials/Metal.h \
     Modelling/Materials/Texture.h \
+    Modelling/Materials/Transparent.h \
     Modelling/Objects/Cara.h \
     Modelling/Objects/FittedPlane.h \
     Modelling/Objects/Mesh.h \
