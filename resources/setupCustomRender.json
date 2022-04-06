@@ -23,7 +23,7 @@
   }
  ],
  "background": false,
- "MAXDEPTH": 10,
+ "MAXDEPTH": 4,
  "colorTopBackground": [0.5, 0.7, 1],
  "colorDownBackground": [ 1, 1, 1]
  }
