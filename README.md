@@ -98,6 +98,8 @@
 * **Fase 2**: 
 
 
+![imagen](https://user-images.githubusercontent.com/31921873/162040256-6f532283-b658-41ce-800b-910ffad6e2bc.png)
+
 * **Fase 3**: 
 
 
