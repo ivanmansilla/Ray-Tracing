@@ -33,5 +33,6 @@
         <file>resources/dadesEuropa_test.json</file>
         <file>resources/Cylinder.json</file>
         <file>resources/custom.json</file>
+        <file>resources/setupDataEuropa_copy.json</file>
     </qresource>
 </RCC>

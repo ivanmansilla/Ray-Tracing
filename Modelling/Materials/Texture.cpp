@@ -11,7 +11,7 @@ Texture::Texture(QString nomfitxer)
 Texture::~Texture() {
 
 }
-vec3 Texture::getColorPixel(vec2 uv) {
+vec3 Texture::getColorPixel(vec2 uv) const{ //const añadido (puede fallar)
     if (success) {
         QColor c(image.pixel((uv.x)*image.width(), (uv.y)*image.height() ));
         return(vec3(c.redF(), c.greenF(), c.blueF()));

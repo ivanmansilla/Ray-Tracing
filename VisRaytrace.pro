@@ -30,6 +30,7 @@ SOURCES += \
         Main.cpp \
         Modelling/Animation.cpp \
         Modelling/Hitable.cpp \
+        Modelling/Materials/MaterialTextura.cpp \
         Modelling/Materials/Metal.cpp \
         Modelling/Materials/Transparent.cpp \
         Modelling/Objects/FittedPlane.cpp \
@@ -94,6 +95,7 @@ HEADERS += \
     Modelling/Materials/ColorMapStatic.h \
     Modelling/Materials/Lambertian.h \
     Modelling/Materials/Material.h \
+    Modelling/Materials/MaterialTextura.h \
     Modelling/Materials/Metal.h \
     Modelling/Materials/Texture.h \
     Modelling/Materials/Transparent.h \
