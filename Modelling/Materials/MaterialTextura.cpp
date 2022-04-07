@@ -15,11 +15,11 @@ MaterialTextura::MaterialTextura(const vec3& a, const vec3& d, const vec3& s, co
 MaterialTextura::~MaterialTextura() {}
 
 vec3 MaterialTextura::getAttenuation(const Ray &r_in, const HitInfo &rec) const {
-    return Kd;
+    return getColorPixel(rec.uv);
 }
 
 bool MaterialTextura::getOneScatteredRay(const Ray &r_in, const HitInfo &rec, Ray &r_out) const {
-    return true;
+    return false;
 }
 
 bool MaterialTextura::getMultipleScatteredRays(const Ray &r_in, const HitInfo &rec, std::vector<Ray> &r_out) const {

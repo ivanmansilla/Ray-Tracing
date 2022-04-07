@@ -177,8 +177,8 @@ vec3 Scene::blinnPhong(HitInfo &info, vec3 lookFrom) {
         vec3 difusa = kdOrText * lights[i]->getId() * glm::max(angleD, 0.f);
 
         // Part especular
-        vec3 H = normalize(normalize(L) + normalize(lookFrom)) / abs(normalize(L) + normalize(lookFrom));
-        float angleS = dot(normalize(normal), H);
+        vec3 H = normalize(L) + normalize(lookFrom) / abs(normalize(L) + normalize(lookFrom));
+        float angleS = dot(normalize(normal), normalize(H));
         vec3 especular = material->Ks * lights[i]->getIs() * glm::pow(glm::max(angleS, 0.f), material->shininess);
 
         // Agafem l'atenuacio
