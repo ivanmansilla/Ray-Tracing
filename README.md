@@ -19,11 +19,11 @@
           - Tots
         - [x] 3.1.c. Hit Boundary Object
           - Lluc Slatosch Vives
-        - [ ] 3.1.d. Hit Cilindre
-          - Estudiants que hi han participat
+        - [X] 3.1.d. Hit Cilindre
+          - Miriam Martinez
     - Creació de REAL DATA
-        - [ ] 3.2.a. Transformacions Translació i Escalat amb gizmos esferes
-          - Estudiants que hi han participat
+        - [X] 3.2.a. Transformacions Translació i Escalat amb gizmos esferes
+          - Ivan Mansilla Flores
         - [X] 3.2.b. Pla de terra
           - Jordi Bujaldón Devesa
         - [ ] 3.2.c. Gizmo de Triangle
@@ -39,29 +39,31 @@
       - Lluc Slatosch Vives
     - [x] Gamma Correction
       - Lluc Slatosch Vives
-    - [ ] Blinn-Phong
-      - Estudiants que hi han participat
-    - [ ] Ombres amb objectes opacs
-      - Estudiants que hi han participat
-    - [ ] Reflexions
-      - Estudiants que hi han participat
-    - [ ] Transparències
-      - Estudiants que hi han participat
-    - [ ] Visualització amb dades reals
-      - Estudiants que hi han participat
+    - [x] Blinn-Phong
+      - Lluc Slatosch Vives
+    - [x] Ombres amb objectes opacs
+      - Jordi Bujaldón Devesa
+    - [x] Reflexions
+      - Jordi Bujaldón Devesa
+    - [x] Transparències
+      - Miriam Martínez
+    - [x] Visualització amb dades reals
+      - Ivan Mansilla Flores
     
     
 - Fase 3
   - [x] Texture mapping en el pla
-    - Estudiants que hi han participat
+    - Lluc Slatosch Vives
+    - Jordi Bujaldón Devesa
   - [x] MaterialTextura
-    - Estudiants que hi han participat
+    - Lluc Slatosch Vives
   - [x] Nova escena de dades
     - Estudiants que hi han participat
    
 - Parts opcionals
   - [ ] Nous objectes paramètrics 
-  - [ ] Penombres
+  - [x] Penombres
+    - Jordi Bujaldón Devesa
    
   - [ ] Diferents tipus de llums 
     
@@ -69,8 +71,8 @@
    
   - [ ] Escena CSG 
   
-  - [ ] Ambient occlusion
-    
+  - [x] Ambient occlusion
+    - Lluc Slatosch Vives
   - [ ] Defocus blur
    
   - [ ] Més d'una propietat en les dades reals
@@ -95,15 +97,58 @@
 ### Screenshots de cada fase
 * **Fase 1**: 
 
+Triangles
+
+
+![4_1_a](https://user-images.githubusercontent.com/72191681/162272719-1ff32e4b-3a2c-499a-9176-aa1f8cfa05da.png)
+
+
+Mesh cub
+
+![mesh_cub_triangles](https://user-images.githubusercontent.com/72191681/162271526-859685b9-9c5f-433b-aed8-babaefdd2186.png)
+
+
+Mesh teapot
+
+
+![teapot_triangles](https://user-images.githubusercontent.com/72191681/162272610-cc921551-bfeb-4c39-bd4a-c0b2eaf46398.png)
+
+
+Cilindre
+
+
+![cilindre](https://user-images.githubusercontent.com/72191681/162274206-6956e227-fb2e-4321-ae75-6af993731026.jpeg)
+
+
 * **Fase 2**: 
 
 
-![imagen](https://user-images.githubusercontent.com/31921873/162040256-6f532283-b658-41ce-800b-910ffad6e2bc.png)
+BlihnPhong amb ombres(no tenim captura del definitiu)
+
+
+![blinphong](https://user-images.githubusercontent.com/72191681/162273404-1aae3471-cba1-4797-a769-f18a39425178.jpeg)
+
+Metal
+
+![metal](https://user-images.githubusercontent.com/72191681/162272172-6ac7ff17-1d77-4af4-a87f-37651907f87e.jpeg)
+
+
+Transparent Diamant
+
+![transparentDiamant](https://user-images.githubusercontent.com/72191681/162272802-6764937e-f6c7-40db-9bcc-28ddc28b9d04.jpeg)
+
 
 * **Fase 3**: 
 
 
 * **Opcionals**:
+
+
+Ombres únicament amb llum ambient (Ambient oclusion)
+
+
+![ambient_oclusion](https://user-images.githubusercontent.com/72191681/162271697-f30f60b2-f1f3-4e72-b526-773f02eba79c.png)
+
 
 * <ins>Penombres</ins>: 
 
