@@ -188,8 +188,9 @@ shared_ptr<TranslateTG> SceneFactoryData::translacioGizmo(shared_ptr<PropertyInf
 }
 
 shared_ptr<ScaleTG> SceneFactoryData::escalatGizmo(shared_ptr<PropertyInfo> propinfo, shared_ptr<InfoMapping> infomap, float valorMonReal) {
-    float objecteScale = normalize((valorMonReal - propinfo->minValue)/(propinfo->maxValue - propinfo->minValue));
-    float escala = (0.25*(valorMonReal/6)*(objecteScale+0.01));
+    float objecteScale = (valorMonReal - propinfo->minValue)/(propinfo->maxValue - propinfo->minValue);
+    float norObj = normalize(objecteScale);
+    float escala = (0.25*(valorMonReal/2)*(norObj+0.01));
     vec3 scale(escala, escala, escala);
     shared_ptr<ScaleTG> matScale = make_shared<ScaleTG>(scale);
     return matScale;
