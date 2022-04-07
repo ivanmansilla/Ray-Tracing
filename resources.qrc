@@ -32,8 +32,13 @@
         <file>resources/setupCustomRender.json</file>
         <file>resources/dadesEuropa_test.json</file>
         <file>resources/Cylinder.json</file>
-        <file>resources/custom.json</file>
-        <file>resources/setupDataEuropa_copy.json</file>
+        <file>resources/customSpheres.json</file>
+        <file>resources/setupDataEuropa1Light.json</file>
         <file>resources/dadesEuropaTextured.json</file>
+        <file>resources/dadesJoanic.json</file>
+        <file>resources/setupDataJoanic.json</file>
+        <file>resources/dadesEarth.json</file>
+        <file>resources/setupDataEarth.json</file>
+        <file>resources/setupRenderTriangles.json</file>
     </qresource>
 </RCC>

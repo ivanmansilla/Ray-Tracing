@@ -98,12 +98,6 @@ vec3 Scene::RayColor(vec3 lookFrom, Ray &ray, int depth) {
     ray2 = ray.getDirection();
 
     if (closestHit(ray, h)) {
-        // color = h.mat_ptr->Kd; // Pregunta g
-        // color = h.normal; // Pregunt h
-        //color = shading(h, lookFrom); // Pregunta i
-        // Pregunta j --> Canviar paràmetres de setUpRenderOneSphere.json
-        // color = h.mat_ptr->Kd;  // Pregunta k
-        // color = shading(h,lookFrom);
 
         if (depth == MAXDEPTH) {
             color += shading(h, lookFrom);
@@ -188,14 +182,20 @@ vec3 Scene::blinnPhong(HitInfo &info, vec3 lookFrom) {
         vec3 p = point + FLT_EPSILON * L;
         float distance = lights[i]->distanceToLight(p);
 
-        // Raig objecte-llum
-        Ray r(p, L, 0.01, distance);
+        float penombra = 0.f;
 
-        // Calcul ombra
-        float ombra = calculOmbra(r);
+        for (unsigned int i = 0; i < lights.size(); i++) {
+            // Raig objecte-llum
+            Ray r(p, L, 0.01, distance);
 
-        // Formula Blinn-Phong
-        color += ambient + ((difusa + especular) * attenuation * ombra);
+            // Calcul ombra
+            penombra += calculOmbra(r);
+        }
+
+        float ombra = penombra / lights.size();
+
+        // Formula Blinn-Phong amb Ambient Occlusion
+        color += (ambient * ombra * attenuation) + ((difusa + especular) * attenuation * ombra);
     }
 
     return color;

@@ -26,16 +26,23 @@
 },"properties": [
 {
 "name": "temperatura",
-"gyzmo": "sphere",
+"gyzmo": "cylinder",
 "minValue": 0,
 "maxValue": 3,
+"radius": 2.0,
+"height":2.0,
+"center":[0.0,0.0,0],
+"axis":[0,1,0],
 "colorMap": "COLOR_MAP_TYPE_PLASMA",
 "material": {
-    "type": "metal",
-    "ka": [0.2, 0.2, 0.2],
-    "kd": [0.7,0.6,0.5],
-    "ks": [0.7, 0.7, 0.7],
-    "shininess": 10.0
+  "type": "lambertian",
+  "ka": [0.2, 0.2, 0.2],
+  "kd": [0.8, 0.4, 1.0],
+  "ks": [1.0, 1.0, 1.0],
+  "shininess": 10.0,
+  "kt": [0.0, 0.0, 0.0],
+  "nut": 0.0,
+  "opacity": 1.0
  },
 "data": [
  [ 0, -1, 1.5],
@@ -44,3 +51,4 @@
  }
  ]
 }
+

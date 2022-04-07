@@ -16,11 +16,6 @@ int main(int argc, char **argv) {
     // Triangles
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/triangles", "://resources/setupRenderTriangles");
 
-
-    // Esferes
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/twoSpheres", "://resources/setupRenderTwoSpheres");
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/spheresLambertianes", "://resources/setupRenderSpheres");
-
     // Malla (cub)
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/meshExample", "://resources/setupCustomRender");
 
@@ -28,8 +23,6 @@ int main(int argc, char **argv) {
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/Cylinder", "://resources/setupCustomRender");
 
     // Dades món real
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/data0", "://resources/setupCustomRender");
-
 
     // Fase 2
 
@@ -37,13 +30,9 @@ int main(int argc, char **argv) {
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/customSpheres", "://resources/setupCustomRender");
 
     // Visualitzacio dades
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/data0", "://resources/setupCustomRender");
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/data10", "://resources/setupCustomRender");
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropa", "://resources/setupCustomRender");
-
-
 
     // Fase 3
+
     auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropaTextured", "://resources/setupDataEuropa1Light");
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesJoanic", "://resources/setupDataJoanic");
     //auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEarth", "://resources/setupDataEarth");

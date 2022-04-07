@@ -70,7 +70,6 @@ bool Mesh::closestHit(Ray &raig, HitInfo& info) const {
             info.p = infoAux.p;
             info.mat_ptr = material.get();
             hit = true;
-
         }
     }
 
@@ -176,8 +175,17 @@ bool Mesh::closestHit(Ray &raig, HitInfo& info) const {
 
 
 bool Mesh::hasHit(const Ray& raig) const {
-    // TO DO Fase 1: A implementar
-    return false;
+    bool hit = false;
+    HitInfo infoAux;
+    float t_aux = 9999999;
+    vector<Triangle> triangless = triangles;
+    for(Triangle triangle : triangles){
+        if(triangle.hasHit(raig) && infoAux.t < t_aux){
+            t_aux = infoAux.t;
+            hit = true;
+        }
+    }
+    return hit;
 
 }
 
