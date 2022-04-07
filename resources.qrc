@@ -35,5 +35,9 @@
         <file>resources/custom.json</file>
         <file>resources/setupDataEuropa_copy.json</file>
         <file>resources/dadesEuropaTextured.json</file>
+        <file>resources/dadesJoanic.json</file>
+        <file>resources/setupDataJoanic.json</file>
+        <file>resources/dadesEarth.json</file>
+        <file>resources/setupDataEarth.json</file>
     </qresource>
 </RCC>

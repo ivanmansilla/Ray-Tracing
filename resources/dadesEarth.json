@@ -1,0 +1,19 @@
+{
+"scene": "dadesEarth",
+"typeScene": "REALDATA",
+"base" : {
+   "type": "FITTEDPLANE",
+   "normal": [0.0, 1.0, 0.0],
+   "point": [0.0, 0.0, 0.0],
+   "pmin": [-100.0, -100.0],
+   "pmax": [100.0, 100.0],
+   "material": {
+       "type": "MaterialTextura",
+       "ka": [0.2, 0.2, 0.2],
+       "kd": [0.7,0.6,0.5],
+       "ks": [1.0, 1.0, 1.0],
+       "shininess": 10.0,
+       "textureFile": "://resources/earth1.png"
+    }
+}
+}

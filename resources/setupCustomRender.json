@@ -2,7 +2,7 @@
 "renderType": "ONLINE",
 "output": "resultat.ppm",
 "camera": {
-    "lookFrom": [13.0, 2.0, 10.0],
+    "lookFrom": [13.0,2.0, 10.0],
     "lookAt": [0, 0, 0],
     "vup": [0, 1, 0],
     "vfov": 20.0,
