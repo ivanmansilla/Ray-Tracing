@@ -90,8 +90,8 @@
     
 ### Explicació de la pràctica    
   * **Organització de la pràctica**
-    * descriu com us heu organitzat
-  
+    * En aquesta pràctica tots hem treballat tant en equip com individualment. La fase0 i el principi de la fase1, vam decidir resoldre-ho entre tots per així agafar els conceptes bàsics del glm i de com està organitzada la pràctica. Això ho vam fer a les primeres classes de laboratori i alguns dies on-line. Per a treballar online, varem decidir reunir-nos els caps de setmana, si era possible, per parlar sobre com va el treball de cadascú o ajudar-nos els uns amb els altres a resoldre errors. La resta de la pràctica l'hem repartit entre els membres així com hem anat avançant. Entre setmana cadascú avança individualment el que pot, els caps de setmana ens connectem online i els dilluns aprofitem també per ajudar-nos i resoldre dubtes de la setmana a classe, així ens hem organitzat.  
+
   * **Decisions a destacar**
     * Comenteu les decisions que heu pres 
 ### Screenshots de cada fase
