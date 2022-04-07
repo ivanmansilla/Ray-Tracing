@@ -40,5 +40,6 @@
         <file>resources/dadesEarth.json</file>
         <file>resources/setupDataEarth.json</file>
         <file>resources/setupRenderTriangles.json</file>
+        <file>resources/dadesEuropaTextured_Cylinder2.json</file>
     </qresource>
 </RCC>

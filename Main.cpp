@@ -45,6 +45,7 @@ int main(int argc, char **argv) {
 
     // Fase 3
     auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropaTextured", "://resources/setupDataEuropa1Light");
+    //auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropaTextured_Cylinder2", "://resources/setupDataEuropa1Light");
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesJoanic", "://resources/setupDataJoanic");
     //auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEarth", "://resources/setupDataEarth");
 
