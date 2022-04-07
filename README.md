@@ -58,7 +58,7 @@
   - [x] MaterialTextura
     - Lluc Slatosch Vives
   - [x] Nova escena de dades
-    - Estudiants que hi han participat
+    - Miriam Martínez
    
 - Parts opcionals
   - [ ] Nous objectes paramètrics 
