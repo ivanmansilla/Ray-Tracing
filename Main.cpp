@@ -11,24 +11,31 @@ int main(int argc, char **argv) {
     // Es donen d'alta prèviament a la carpeta de resources del projecte
     // Cal que aquí no hi posis extensió (directament anirà a buscar el fitxer amb extensió .json
 
-    // Exemple d'escena virtual carregada des de json:
-   // auto controller = make_shared<Controller>(Serializable::Json, "://resources/Cylinder", "://resources/setupCustomRender");
+    // Fase 1
 
-    // Exemple d'escena de dades carregada des de json:
-    //auto controller = make_shared<Controller>(Serializable::Json, "://resources/data0", "://resources/setupRenderOneSphere");
+    // Triangles
+    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/triangles", "://resources/setupRenderTriangles");
 
-    // Esferes
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/twoSpheres", "://resources/setupRenderTwoSpheres");
-    //auto controller = make_shared<Controller>(Serializable::Json, "://resources/custom", "://resources/setupCustomRender");
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropaTextured", "://resources/setupDataEuropa_copy");
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/spheresLambertianes", "://resources/setupRenderSpheres");
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesBCNOneValue", "://resources/setupDataBCNOneValue");
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropa_test", "://resources/setupDataEuropa_copy");
+    // Malla (cub)
+    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/meshExample", "://resources/setupCustomRender");
+
+    // Cilindre
+    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/Cylinder", "://resources/setupCustomRender");
+
+    // Dades món real
+
+    // Fase 2
+
+    // Escena esferes
+    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/customSpheres", "://resources/setupCustomRender");
+
+    // Visualitzacio dades
+
+    // Fase 3
+
+    auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropaTextured", "://resources/setupDataEuropa1Light");
     // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesJoanic", "://resources/setupDataJoanic");
-    auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEarth", "://resources/setupDataEarth");
-
-    // 4.2- apartado b
-    // auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEuropa_test", "://resources/setupCustomRender");
+    //auto controller = make_shared<Controller>(Serializable::Json, "://resources/dadesEarth", "://resources/setupDataEarth");
 
     controller->start(argc, argv);
 
