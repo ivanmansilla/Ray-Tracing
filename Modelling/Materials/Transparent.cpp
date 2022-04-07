@@ -48,7 +48,7 @@ bool Transparent::getOneScatteredRay(const Ray &r_in, const HitInfo &rec, Ray &r
     } else {
         r_out = Ray(rec.p, t);
     }
-   return true;
+    return false;
 }
 
 bool Transparent::getMultipleScatteredRays(const Ray &r_in, const HitInfo &rec, std::vector<Ray> &r_out) const {

@@ -19,11 +19,11 @@
   "a": 0.5,
   "b": 0.0,
   "c": 0.01,
-  "position": [2.0, 8.0, 10.0]
-  }
+  "position": [2.0, 20.0, 10.0]
+}
  ],
  "background": false,
- "MAXDEPTH": 4,
+ "MAXDEPTH": 10,
  "colorTopBackground": [0.5, 0.7, 1],
  "colorDownBackground": [ 1, 1, 1]
  }

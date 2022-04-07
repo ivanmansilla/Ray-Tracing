@@ -13,7 +13,7 @@
    "kd": [0.7,0.4,0.4],
    "ks": [1.0, 1.0, 1.0],
    "shininess": 500.0,
-   "textureFile": "://resources/map.png"
+   "textureFile": "://resources/europa.png"
     }
 },
 "Real": {

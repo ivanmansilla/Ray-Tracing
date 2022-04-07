@@ -188,14 +188,20 @@ vec3 Scene::blinnPhong(HitInfo &info, vec3 lookFrom) {
         vec3 p = point + FLT_EPSILON * L;
         float distance = lights[i]->distanceToLight(p);
 
-        // Raig objecte-llum
-        Ray r(p, L, 0.01, distance);
+        float penombra = 0.f;
 
-        // Calcul ombra
-        float ombra = calculOmbra(r);
+        for (unsigned int i = 0; i < lights.size(); i++) {
+            // Raig objecte-llum
+            Ray r(p, L, 0.01, distance);
 
-        // Formula Blinn-Phong
-        color += ambient + ((difusa + especular) * attenuation * ombra);
+            // Calcul ombra
+            penombra += calculOmbra(r);
+        }
+
+        float ombra = penombra / lights.size();
+
+        // Formula Blinn-Phong amb Ambient Occlusion
+        color += (ambient * ombra * attenuation) + ((difusa + especular) * attenuation * ombra);
     }
 
     return color;
