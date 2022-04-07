@@ -166,3 +166,12 @@ Ombres únicament amb llum ambient (Ambient oclusion)
 * **Més visualitzacions**:
 
    * Per totes les imatges, incluiu aqui la imatge obtinguda i els fitxers de dades i de configuració que heu fet servir
+
+
+![imagen (2)](https://user-images.githubusercontent.com/31921873/162329409-41ffd4a4-a9a0-45a6-b0f1-cdcd7b202c70.png)
+
+
+
+![imagen (1)](https://user-images.githubusercontent.com/31921873/162329417-208a7b0b-b633-479e-924d-3ab925013486.png)
+
+
