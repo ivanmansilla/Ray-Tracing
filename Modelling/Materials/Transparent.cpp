@@ -54,3 +54,6 @@ bool Transparent::getOneScatteredRay(const Ray &r_in, const HitInfo &rec, Ray &r
 bool Transparent::getMultipleScatteredRays(const Ray &r_in, const HitInfo &rec, std::vector<Ray> &r_out) const {
     return true;
 }
+vec3 Transparent::getColorPixel(vec2 uv) const {
+    return Kd;
+}

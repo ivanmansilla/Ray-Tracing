@@ -163,6 +163,7 @@ vec3 Scene::blinnPhong(HitInfo &info, vec3 lookFrom) {
     vec3 point = info.p;
     vec3 normal = info.normal;
     Material* material = info.mat_ptr;
+    vec3 kdOrText = material->getColorPixel(info.uv);
 
     color = (globalLight * material->Ka);    // Afegim l'ambient global
 
@@ -173,11 +174,11 @@ vec3 Scene::blinnPhong(HitInfo &info, vec3 lookFrom) {
         // Part difusa
         vec3 L = lights[i]->vectorL(point);
         float angleD = dot(normalize(L), normalize(normal));
-        vec3 difusa = material->Kd * lights[i]->getId() * glm::max(angleD, 0.f);
+        vec3 difusa = kdOrText * lights[i]->getId() * glm::max(angleD, 0.f);
 
         // Part especular
-        vec3 H = (normalize(L) + normalize(lookFrom)) / abs(normalize(L) + normalize(lookFrom));
-        float angleS = dot(normalize(normal), normalize(H));
+        vec3 H = normalize(normalize(L) + normalize(lookFrom)) / abs(normalize(L) + normalize(lookFrom));
+        float angleS = dot(normalize(normal), H);
         vec3 especular = material->Ks * lights[i]->getIs() * glm::pow(glm::max(angleS, 0.f), material->shininess);
 
         // Agafem l'atenuacio

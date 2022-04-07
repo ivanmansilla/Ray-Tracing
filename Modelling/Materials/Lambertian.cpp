@@ -33,3 +33,6 @@ bool Lambertian::getMultipleScatteredRays(const Ray& r_in, const HitInfo& rec,  
     }
     return true;
 }
+vec3 Lambertian::getColorPixel(vec2 uv) const {
+    return Kd;
+}

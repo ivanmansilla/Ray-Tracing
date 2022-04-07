@@ -21,7 +21,8 @@ public:
     virtual void read(const QJsonObject &json)override;
     virtual vec3 getColorPixel(vec2 uv) const override;
 private:
-    Texture textura;
+    shared_ptr<Texture> textura;
+    QString fitxer;
 };
 
 

@@ -28,3 +28,6 @@ bool Metal::getOneScatteredRay(const Ray &r_in, const HitInfo &rec, Ray &r_out) 
 bool Metal::getMultipleScatteredRays(const Ray &r_in, const HitInfo &rec, std::vector<Ray> &r_out) const {
     return true;
 }
+vec3 Metal::getColorPixel(vec2 uv) const {
+    return Kd;
+}

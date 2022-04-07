@@ -19,8 +19,8 @@ public:
     virtual vec3 getAttenuation(const Ray& r_in, const HitInfo& rec) const = 0;
     virtual bool getOneScatteredRay(const Ray& r_in, const HitInfo& rec, Ray& r_out) const = 0;
     virtual bool getMultipleScatteredRays(const Ray& r_in, const HitInfo& rec, std::vector<Ray>& r_out) const = 0;
-    virtual vec3 getDiffuse(vec2 point) const;
-    virtual vec3 getColorPixel(vec2 uv) const;
+    vec3 getDiffuse(vec2 point) const;
+    virtual vec3 getColorPixel(vec2 uv) const = 0;
 
     vec3 Ka;
     vec3 Kd;
@@ -33,8 +33,7 @@ public:
     virtual void read (const QJsonObject &json);
     virtual void write(QJsonObject &json) const;
     virtual void print(int indentation) const;
-protected:
-    QString fitxer; // Fitxer en cas que sigui textura
+
 };
 
 

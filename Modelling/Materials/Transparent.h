@@ -15,7 +15,7 @@ public:
     virtual vec3 getAttenuation(const Ray& r_in, const HitInfo& rec) const override;
     virtual bool getOneScatteredRay(const Ray& r_in, const HitInfo& rec, Ray& r_out) const override;
     virtual bool getMultipleScatteredRays(const Ray& r_in, const HitInfo& rec, std::vector<Ray>& r_out) const override;
-
+    virtual vec3 getColorPixel(vec2 uv) const override;
 };
 
 

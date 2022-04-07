@@ -37,10 +37,7 @@ Material::Material(vec3 a, vec3 d, vec3 s, float shin, float opac) {
 
 
 vec3 Material::getDiffuse(vec2 point) const {
-    if(fitxer == NULL)
-        return Kd;
-    else
-        return getColorPixel(point);
+     return getColorPixel(point);
 }
 
 void Material::read (const QJsonObject &json)

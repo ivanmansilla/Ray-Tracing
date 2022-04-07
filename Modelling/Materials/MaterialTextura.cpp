@@ -3,7 +3,7 @@
 MaterialTextura::MaterialTextura() {}
 
 MaterialTextura::MaterialTextura(const vec3& color): Material() {
-    Ks = color;
+    Kd = color;
 }
 
 MaterialTextura::MaterialTextura(const vec3& a, const vec3& d, const vec3& s, const float k): Material(a, d, s, k) {
@@ -15,11 +15,11 @@ MaterialTextura::MaterialTextura(const vec3& a, const vec3& d, const vec3& s, co
 MaterialTextura::~MaterialTextura() {}
 
 vec3 MaterialTextura::getAttenuation(const Ray &r_in, const HitInfo &rec) const {
-    return Ks;
+    return Kd;
 }
 
 bool MaterialTextura::getOneScatteredRay(const Ray &r_in, const HitInfo &rec, Ray &r_out) const {
-    return false;
+    return true;
 }
 
 bool MaterialTextura::getMultipleScatteredRays(const Ray &r_in, const HitInfo &rec, std::vector<Ray> &r_out) const {
@@ -58,11 +58,12 @@ void MaterialTextura::read (const QJsonObject &json)
         opacity = json["opacity"].toDouble();
     if (json.contains("nut") && json["nut"].isDouble())
         nut = json["nut"].toDouble();
-    if (json.contains("textureFile") && json["textureFile"].isString())
+    if (json.contains("textureFile") && json["textureFile"].isString()){
         fitxer = json["textureFile"].toString();
-        textura = Texture(fitxer);
+        textura = make_shared<Texture>(fitxer);
+    }
 }
 
 vec3 MaterialTextura::getColorPixel(vec2 uv) const {
-    return textura.getColorPixel(uv);
+    return textura->getColorPixel(uv);
 }

@@ -8,6 +8,7 @@ bool FittedPlane::closestHit(Ray &r, HitInfo &info) const {
     if(Plane::closestHit(r, info)){
         if ((info.p[0] > (pmin.x)) && (info.p[0] < (pmax.x)) && (info.p[2] < (pmax.y)) && (info.p[2] > (pmin.y))){
             info.mat_ptr = this->material.get();
+            info.uv = vec2((info.p[0]-pmin.x)/(pmax.x-pmin.x), (info.p[2]-pmin.y)/(pmax.y-pmin.y));
             return true;
         }
     }
