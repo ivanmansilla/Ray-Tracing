@@ -29,7 +29,7 @@
         - [ ] 3.2.c. Gizmo de Triangle
           - Estudiants que hi han participat
         - [ ] 3.2.d. Gizmo de Cilindre
-          - Estudiants que hi han participat
+          - Ivan Mansilla Flores
         - [ ] Noves dades
           - Estudiants que hi han participat
        
@@ -120,6 +120,13 @@ Cilindre
 ![cilindre](https://user-images.githubusercontent.com/72191681/162274206-6956e227-fb2e-4321-ae75-6af993731026.jpeg)
 
 
+Fitted plane + sphera
+
+
+![2](https://user-images.githubusercontent.com/31921873/162336839-875b3456-2a02-49fd-ae75-bda6251bb866.jpeg)
+
+
+
 * **Fase 2**: 
 
 
@@ -137,6 +144,12 @@ Transparent Diamant
 
 ![transparentDiamant](https://user-images.githubusercontent.com/72191681/162272802-6764937e-f6c7-40db-9bcc-28ddc28b9d04.jpeg)
 
+Show fitted plane + sphera
+
+
+![WhatsApp Image 2022-04-08 at 1 40 34 AM (1)](https://user-images.githubusercontent.com/31921873/162336918-b590359d-65f4-4204-9753-09cb7c9d819d.jpeg)
+
+
 
 * **Fase 3**: 
 
@@ -148,6 +161,15 @@ Ombres únicament amb llum ambient (Ambient oclusion)
 
 
 ![ambient_oclusion](https://user-images.githubusercontent.com/72191681/162271697-f30f60b2-f1f3-4e72-b526-773f02eba79c.png)
+
+
+![WhatsApp Image 2022-04-08 at 1 40 34 AM (2)](https://user-images.githubusercontent.com/31921873/162336625-1698ac62-9b50-44bd-bf97-d93e48073281.jpeg)
+
+
+![WhatsApp Image 2022-04-08 at 1 40 35 AM](https://user-images.githubusercontent.com/31921873/162336584-9cfe3d37-c87b-4dda-acbf-a5a61724fd87.jpeg)
+
+
+![WhatsApp Image 2022-04-08 at 1 40 34 AM](https://user-images.githubusercontent.com/31921873/162336596-5450be9a-6fcb-4830-a650-360d0de94e18.jpeg)
 
 
 * <ins>Penombres</ins>: 
